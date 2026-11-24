@@ -1,0 +1,12 @@
+$ docker run -d --name tw-model-20261124-article-math --gpus all --user 1003:1004 --cap-drop ALL --security-opt no-new-privileges --memory 48g --pids-limit 2048 -p 127.0.0.1:10091:8080 -v ./models:/models:ro tw-llama-unslothai-llama.cpp:b12651-mix-c7059d6 -m /models/unsloth/Inkling-2-Mini-GGUF/Inkling-2-Mini-UD-IQ4_XS.gguf --host 0.0.0.0 --port 8080 -c 16384 -np 1 -ngl 99 --n-cpu-moe 12
+
+0.00.103.424 I srv  llama_server: initializing ...
+0.00.103.435 I cmn  common_param: common_params_print_info: verbosity = 3 (adjust with the `-lv N` CLI arg)
+0.00.104.526 W srv  server_setup: security: no API key is set and CORS allows all origins (see https://github.com/ggml-org/llama.cpp/pull/25655)
+0.00.105.947 I srv    load_model: loading model '/models/unsloth/Inkling-2-Mini-GGUF/Inkling-2-Mini-UD-IQ4_XS.gguf'
+0.00.797.523 W llama_model_loader: tensor overrides to CPU are used with mmap enabled - consider using --load-mode none for better performance
+0.07.038.602 I cmn          init: llama threadpool init, n_threads = 6
+0.07.279.570 I srv    load_model: initializing, n_slots = 1, n_ctx_slot = 16384, kv_unified = 'false'
+0.07.282.561 W srv          init: chat template supports preserving reasoning, it is enabled by default (may use more tokens, disable via --no-reasoning-preserve)
+0.07.282.595 I srv  server_run_i: model loaded
+0.07.283.580 I srv  server_on_li: listening on http://0.0.0.0:8080

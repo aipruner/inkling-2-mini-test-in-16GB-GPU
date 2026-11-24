@@ -1,0 +1,4 @@
+$ nvidia-smi --query-gpu=name,memory.total,memory.used,memory.free,driver_version --format=csv,noheader; free -m; nproc
+
+NVIDIA GeForce RTX 4060 Ti（顯存 16.0 GB，可用 14.8 GB）、系統記憶體 63 GB（可用 52 GB）、12 核心、模型資料夾磁碟剩 619 GB
+{"gpu": "NVIDIA GeForce RTX 4060 Ti", "vram_total_mb": 16380, "vram_used_mb": 810, "vram_free_mb": 15138, "driver": "580.178.04", "ram_total_mb": 64172, "ram_avail_mb": 53390, "cpus": 12, "disk_free_gb": 619, "apps": []}

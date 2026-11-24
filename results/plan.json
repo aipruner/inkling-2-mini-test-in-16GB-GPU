@@ -1,0 +1,332 @@
+{
+ "kind": "model",
+ "repo": "https://huggingface.co/thinkingmachines/Inkling-2-Mini",
+ "model_id": "thinkingmachines/Inkling-2-Mini",
+ "quant_repo": "unsloth/Inkling-2-Mini-GGUF",
+ "quant_repos": [
+  "unsloth/Inkling-2-Mini-GGUF",
+  "ggml-org/Inkling-2-Mini-GGUF",
+  "bartowski/Inkling-2-Mini-GGUF",
+  "lmstudio-community/Inkling-2-Mini-GGUF",
+  "AtomicChat/Inkling-2-Mini-GGUF"
+ ],
+ "at": "2026-11-24T13:23:11+08:00",
+ "hardware": {
+  "gpu": "NVIDIA GeForce RTX 4060 Ti",
+  "vram_total_mb": 16380,
+  "vram_used_mb": 7014,
+  "vram_free_mb": 15908,
+  "driver": "580.178.04",
+  "ram_total_mb": 64172,
+  "ram_avail_mb": 53123,
+  "cpus": 12,
+  "disk_free_gb": 619,
+  "apps": [
+   {
+    "pid": 1991620,
+    "mb": 6974,
+    "name": "/usr/local/bin/llama-server"
+   }
+  ],
+  "paused_mb": 6974
+ },
+ "quants": [
+  {
+   "name": "UD-IQ1_S",
+   "files": [
+    "Inkling-2-Mini-UD-IQ1_S.gguf"
+   ],
+   "size_gb": 7.76,
+   "fit": "gpu"
+  },
+  {
+   "name": "UD-IQ1_M",
+   "files": [
+    "Inkling-2-Mini-UD-IQ1_M.gguf"
+   ],
+   "size_gb": 8.02,
+   "fit": "gpu"
+  },
+  {
+   "name": "UD-IQ2_XXS",
+   "files": [
+    "Inkling-2-Mini-UD-IQ2_XXS.gguf"
+   ],
+   "size_gb": 8.49,
+   "fit": "gpu"
+  },
+  {
+   "name": "UD-Q2_K_XL",
+   "files": [
+    "Inkling-2-Mini-UD-Q2_K_XL.gguf"
+   ],
+   "size_gb": 9.14,
+   "fit": "gpu"
+  },
+  {
+   "name": "UD-IQ3_XXS",
+   "files": [
+    "Inkling-2-Mini-UD-IQ3_XXS.gguf"
+   ],
+   "size_gb": 11.66,
+   "fit": "gpu"
+  },
+  {
+   "name": "UD-Q3_K_XL",
+   "files": [
+    "Inkling-2-Mini-UD-Q3_K_XL.gguf"
+   ],
+   "size_gb": 13.63,
+   "fit": "gpu"
+  },
+  {
+   "name": "UD-IQ4_XS",
+   "files": [
+    "Inkling-2-Mini-UD-IQ4_XS.gguf"
+   ],
+   "size_gb": 15.73,
+   "fit": "offload"
+  },
+  {
+   "name": "UD-Q4_K_M",
+   "files": [
+    "Inkling-2-Mini-UD-Q4_K_M.gguf"
+   ],
+   "size_gb": 16.61,
+   "fit": "offload"
+  },
+  {
+   "name": "UD-Q4_K_XL",
+   "files": [
+    "Inkling-2-Mini-UD-Q4_K_XL.gguf"
+   ],
+   "size_gb": 17.63,
+   "fit": "offload"
+  },
+  {
+   "name": "UD-Q8_K_XL",
+   "files": [
+    "Inkling-2-Mini-UD-Q8_K_XL.gguf"
+   ],
+   "size_gb": 22.87,
+   "fit": "offload"
+  }
+ ],
+ "main": "UD-Q3_K_XL",
+ "extra": [
+  "UD-IQ4_XS",
+  "UD-IQ3_XXS"
+ ],
+ "drafters": [
+  {
+   "path": "Mainline_Support/dspark-Inkling-2-Mini-Q8_0.gguf_file",
+   "size_gb": 0.5
+  },
+  {
+   "path": "Old_Support/dspark-Inkling-2-Mini-BF16.gguf_file",
+   "size_gb": 0.65
+  },
+  {
+   "path": "Old_Support/dspark-Inkling-2-Mini-Q8_0.gguf_file",
+   "size_gb": 0.4
+  },
+  {
+   "path": "dspark-Inkling-2-Mini-Q8_0.gguf",
+   "size_gb": 0.5
+  },
+  {
+   "path": "dspark-Inkling-2-Mini-Q8_0_Old.gguf",
+   "size_gb": 0.4
+  },
+  {
+   "path": "dspark/dspark-Inkling-2-Mini-BF16-mainline.gguf_file",
+   "size_gb": 0.75
+  },
+  {
+   "path": "dspark/dspark-Inkling-2-Mini-BF16.gguf",
+   "size_gb": 0.65
+  }
+ ],
+ "offload_possible": true,
+ "engine": {
+  "kind": "llama.cpp",
+  "source": "https://github.com/unslothai/llama.cpp",
+  "ref": "b12651-mix-c7059d6",
+  "prebuilt": "https://github.com/unslothai/llama.cpp/releases/download/b12651-mix-c7059d6/app-b12651-mix-c7059d6-linux-x64-cuda12-newer.tar.gz",
+  "why": "模型卡載明 llama.cpp (開源大語言模型推論引擎) 主線尚未支援 DSpark (草稿輔助加速模型) 加速，需使用 unslothai 的 fork (衍生分支版本)。"
+ },
+ "sampling": {
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "min_p": 0.0
+ },
+ "chat_extra": {},
+ "configs": [
+  {
+   "id": "c1",
+   "name": "基準",
+   "group": "base",
+   "quant": "UD-Q3_K_XL",
+   "args": [],
+   "why": "主量化全層載入 GPU (圖形處理器)，使用預設參數作為各組測試基準",
+   "on": true
+  },
+  {
+   "id": "c2",
+   "name": "關閉 Flash Attention",
+   "group": "attn",
+   "quant": "UD-Q3_K_XL",
+   "args": [
+    "-fa",
+    "off"
+   ],
+   "why": "關閉預設啟用的 Flash Attention (快閃注意力機制)，評估注意力運算加速成效",
+   "on": true
+  },
+  {
+   "id": "c3",
+   "name": "KV cache Q8 量化",
+   "group": "kv",
+   "quant": "UD-Q3_K_XL",
+   "args": [
+    "-ctk",
+    "q8_0",
+    "-ctv",
+    "q8_0"
+   ],
+   "why": "啟用 KV cache (鍵值快取) 量化至 Q8_0 (8 位元整數量化格式)，評估節省顯存對推論速度之影響",
+   "on": true
+  },
+  {
+   "id": "c4",
+   "name": "DSpark draft 2",
+   "group": "spec",
+   "quant": "UD-Q3_K_XL",
+   "args": [
+    "-md",
+    "@dspark-Inkling-2-Mini-Q8_0.gguf",
+    "--spec-type",
+    "draft-dspark",
+    "--spec-draft-n-max",
+    "2",
+    "-ngld",
+    "99"
+   ],
+   "why": "採用 Unsloth 模型卡建議之 draft (草稿模型預測) 長度 2 進行 speculative decoding (推測解碼)",
+   "on": true
+  },
+  {
+   "id": "c5",
+   "name": "DSpark draft 3",
+   "group": "spec",
+   "quant": "UD-Q3_K_XL",
+   "args": [
+    "-md",
+    "@dspark-Inkling-2-Mini-Q8_0.gguf",
+    "--spec-type",
+    "draft-dspark",
+    "--spec-draft-n-max",
+    "3",
+    "-ngld",
+    "99"
+   ],
+   "why": "採用 llama.cpp 預設之 draft 長度 3，對比長度 2 觀察接受率與速度變化",
+   "on": true
+  },
+  {
+   "id": "c6",
+   "name": "IQ3 量化",
+   "group": "quant",
+   "quant": "UD-IQ3_XXS",
+   "args": [],
+   "why": "比較用極限壓縮量化檔且可全入顯存，評估 3-bit 級別對速度與品質之影響",
+   "on": true
+  },
+  {
+   "id": "c7",
+   "name": "IQ4 MoE 放 CPU",
+   "group": "offload",
+   "quant": "UD-IQ4_XS",
+   "args": [
+    "--n-cpu-moe",
+    "12"
+   ],
+   "why": "模型大小超出 VRAM (視訊記憶體) 限制，設定將 MoE (混合專家架構) 專家層卸載至 CPU (中央處理器)",
+   "on": true
+  }
+ ],
+ "tests": {
+  "speed": true,
+  "math": true,
+  "tetris": true
+ },
+ "bench_version": "1",
+ "question": "在 16GB 顯存的電腦上，Inkling 2 Mini 能否在全進顯卡的 Q3 量化下流暢運行，且 DSpark 投機解碼是否真能帶來速度提升？",
+ "reader_questions": [
+  {
+   "q": "配備 16GB 顯存的電腦能順跑 Inkling 2 Mini 嗎？選 UD-Q3_K_XL 還是 UD-IQ3_XXS 比較好？",
+   "why": "讀者最關心主流 16GB 顯卡是否能完全載入模型，以及不同量化檔在顯存佔用、速度與推理品質之間的折衷。",
+   "measure": "加速參數比較（量測顯存佔用與生成速度）與經典數學 10 題（量測量化後之邏輯推理品質）",
+   "auto": []
+  },
+  {
+   "q": "DSpark 投機解碼在消費級顯卡上到底有沒有加速效果？開了會變快還是變慢？",
+   "why": "社群實測說法分歧，有人宣稱巨幅加速，也有人指出 16GB 顯卡驗證步驟開銷過高導致減速，讀者急需客觀數據驗證。",
+   "measure": "加速參數比較（對比基準組與各組 spec 設定之 tok/s 及 draft 接受率）",
+   "auto": []
+  },
+  {
+   "q": "這款模型寫前端互動程式碼的能力如何？是否真如官方警告容易陷入除錯死循環？",
+   "why": "官方模型卡警告該架構除錯代碼時容易陷入 reasoning loops，社群亦有重複輸出抱怨，讀者想知道其前端單檔實作能力。",
+   "measure": "俄羅斯方塊（實測單檔 HTML 生成、錯誤修復與功能清單逐條核對）",
+   "auto": []
+  }
+ ],
+ "claims": [
+  {
+   "claim": "在 16GB 顯卡上執行 MoE 量化時，DSpark 投機解碼驗證開銷過大，反而無法提升速度",
+   "source": "S01",
+   "measure": "在 RTX 4060 Ti 16GB 上執行 UD-Q3_K_XL，比較開啟 DSpark 與未開啟基準組的解碼生成速度與 acceptance rate (接受率)，對照 S01 網友在 16GB RTX 5070 Ti 上的結論",
+   "metric": "產生 tok/s (每秒生成 Token 數) 與 draft 接受率",
+   "on": true
+  },
+  {
+   "claim": "Inkling 2 Mini 在程式碼生成與除錯時容易陷入長時間推理死循環或停滯",
+   "source": "S02",
+   "measure": "以俄羅斯方塊單檔 HTML (超文本標記語言) 生成任務實測，檢驗模型是否在單次生成或錯誤修復時出現無限循環、重複輸出或中斷卡死",
+   "metric": "俄羅斯方塊單檔 HTML 生成成功率與核對功能清單通過數",
+   "on": true
+  },
+  {
+   "claim": "消費級 GPU 執行 Q4 等級量化時，llama.cpp 解碼速度僅約 45–54 tok/s",
+   "source": "S01",
+   "measure": "以 RTX 4060 Ti 執行 UD-IQ4_XS（卸載部分專家至 CPU）與全入顯存的 UD-Q3_K_XL，量測實際解碼速度，對照 S01 在 RTX 3090 上測得的數據",
+   "metric": "產生 tok/s",
+   "on": true
+  },
+  {
+   "claim": "3-bit 級別量化（UD-IQ3_XXS）相對於高精度基準維持極低損失，品質損失小且省顯存",
+   "source": "S01",
+   "measure": "在 RTX 4060 Ti 上比對 UD-IQ3_XXS 與主量化 UD-Q3_K_XL 在經典數學 10 題的解題正確率，評估 3-bit 壓縮對核心邏輯推理的影響",
+   "metric": "經典數學 10 題答對題數",
+   "on": true
+  }
+ ],
+ "landscape": {},
+ "limits": [
+  "官方建議之 32GB 以上 VRAM 原版 NVFP4/MXFP8 精度與完整未量化權重，無法在 16GB 顯卡上完整載入實測。",
+  "本次測試未加掛視覺投影器 mmproj-F16.gguf，未量測多模態圖片輸入與視覺問答能力。",
+  "受限於固定測試規範（context 16384，context (上下文視窗)），無法實測模型卡標榜最高 1M context 之長文本極限推論與記憶體衰減曲線。",
+  "社群討論中藉由 SSD (固態硬碟) 權重串流將記憶體壓在 8GB 預算的機制（如 Atomic Engine），屬於第三方客製引擎，官方映像與 llama.cpp 環境無法直接復現。"
+ ],
+ "auto": [],
+ "manual": [],
+ "duel": null,
+ "phone": null,
+ "target": null,
+ "image": "tw-llama-unslothai-llama.cpp:b12651-mix-c7059d6",
+ "full_auto": false,
+ "notes": "官方模型卡指出：1. 中間 12 層循環三次之 Looped Transformer (循環變換器架構) 導致每 Token (詞元單位) 實質運算量達 5.4B 活躍參數水準，prefill (預填階段，處理輸入 Prompt 的過程) 相對偏慢；2. 推理 effort 即使設為最低亦無法完全關閉推理，且程式碼生成或除錯時偶有死循環或重複檢查停滯問題；3. 非英語（特別是中文）可能出現斷句不全與夾雜語言現象；4. DSpark 投機解碼依賴專用 drafter (草稿輔助模型) 權重，在 CUDA (統一計算架構) 批次驗證時輸出可能存在微小的 token 變異。",
+ "problems": []
+}

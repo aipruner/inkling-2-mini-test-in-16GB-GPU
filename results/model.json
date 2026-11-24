@@ -1,0 +1,2530 @@
+{
+ "bench_version": "2",
+ "model_id": "thinkingmachines/Inkling-2-Mini",
+ "quant_repo": "unsloth/Inkling-2-Mini-GGUF",
+ "main": "UD-Q3_K_XL",
+ "engine": {
+  "kind": "llama.cpp",
+  "source": "https://github.com/unslothai/llama.cpp",
+  "ref": "b12651-mix-c7059d6",
+  "prebuilt": "https://github.com/unslothai/llama.cpp/releases/download/b12651-mix-c7059d6/app-b12651-mix-c7059d6-linux-x64-cuda12-newer.tar.gz",
+  "why": "模型卡載明 llama.cpp (開源大語言模型推論引擎) 主線尚未支援 DSpark (草稿輔助加速模型) 加速，需使用 unslothai 的 fork (衍生分支版本)。",
+  "image": "tw-llama-unslothai-llama.cpp:b12651-mix-c7059d6",
+  "digest": "tw-llama-unslothai-llama.cpp@sha256:d505cb3c85ed57c033b9b0a9fd0419d8cde36fd80fce819fbadc21f59a9c995a"
+ },
+ "sampling": {
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "top_k": 0,
+  "min_p": 0.0
+ },
+ "hardware": {
+  "gpu": "NVIDIA GeForce RTX 4060 Ti",
+  "vram_total_mb": 16380,
+  "vram_used_mb": 810,
+  "vram_free_mb": 15138,
+  "driver": "580.178.04",
+  "ram_total_mb": 64172,
+  "ram_avail_mb": 53390,
+  "cpus": 12,
+  "disk_free_gb": 619,
+  "apps": []
+ },
+ "paused": [
+  {
+   "name": "Qwen3-VL（media2text）",
+   "pid": 2576595
+  }
+ ],
+ "configs": [
+  {
+   "id": "c1",
+   "name": "基準",
+   "group": "base",
+   "quant": "UD-Q3_K_XL",
+   "args": [
+    "-c",
+    "16384",
+    "-np",
+    "1",
+    "-ngl",
+    "99"
+   ],
+   "status": "ok",
+   "why": "主量化全層載入 GPU (圖形處理器)，使用預設參數作為各組測試基準",
+   "steps": [
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+   ],
+   "bench": [
+    {
+     "id": "s1",
+     "name": "短問答",
+     "prompt_n": 45,
+     "prompt_tps": 140.8,
+     "gen_n": 256,
+     "gen_tps": 52.7,
+     "text": "The user asks in Traditional Chinese: \"用三句話解釋什麼是量化（quantization），以及它對在自己電腦上跑模型有什麼影響。\" Translation: \"Explain in three sentences what quantization is, and what it affects for running models on your own computer.\"\n\nNeed answer in Traditional Chinese likely. Need exactly three sentences? They ask \"用三句話解釋什麼是量化...以及它對...有什麼影響\". We should provide three sentences total. Need be accurate.\n\nQuantization: re"
+    },
+    {
+     "id": "s2",
+     "name": "寫程式",
+     "prompt_n": 57,
+     "prompt_tps": 286.4,
+     "gen_n": 512,
+     "gen_tps": 52.2,
+     "text": "The user asks in Traditional Chinese: \"用 Python 寫一個命令列待辦事項工具：可以新增、列出、完成、刪除項目，資料存在 JSON 檔，附上簡短的使用說明。\" Translation: Write a command-line todo tool in Python: can add, list, complete, delete items, data stored in JSON file, with brief usage instructions.\n\nNeed answer in Traditional Chinese likely. Need provide code and usage. Need ensure correctness. We can craft a single-file CLI using argparse, jso"
+    },
+    {
+     "id": "s3",
+     "name": "長輸入",
+     "prompt_n": 6812,
+     "prompt_tps": 1054.7,
+     "gen_n": 128,
+     "gen_tps": 48.3,
+     "text": "The user pasted 30 identical paragraphs in Traditional Chinese about local inference. They ask: \"請用五點條列整理上面這份文件的重點。\" Need answer in Traditional Chinese likely. Need summarize into five bullet points. Need be careful: the document is repetitive; we can note it repeats same content. Need produce five bullets. Need not over-explain. Need include key points: definition of local inference; factors affe"
+    },
+    {
+     "id": "s4",
+     "name": "英文散文",
+     "prompt_n": 37,
+     "prompt_tps": 204.3,
+     "gen_n": 512,
+     "gen_tps": 52.2,
+     "text": "The user wants a short essay in English about why people run language models on their own computers instead of in the cloud. Need produce final answer only. Need ensure essay is short, coherent, maybe 4-6 paragraphs or one cohesive short essay. Need discuss privacy, cost, control, latency, offline/reliability, customization, data sovereignty, security, independence from providers, experimentation."
+    },
+    {
+     "id": "s5",
+     "name": "HTML 程式",
+     "prompt_n": 66,
+     "prompt_tps": 329.9,
+     "gen_n": 512,
+     "gen_tps": 52.1,
+     "text": "The user wants a Pomodoro timer webpage in a single HTML file. They wrote in Traditional Chinese (Taiwan style): \"用單一 HTML 檔寫一個番茄鐘計時器網頁：可以開始、暫停、重設，時間到會顯示提醒，CSS 和 JavaScript 都寫在同一個檔案。\"\n\nTranslation: \"Write a Pomodoro timer webpage in a single HTML file: can start, pause, reset, and shows an alert when time is up, CSS and JavaScript both in the same file.\"\n\nI should respond in Traditional Chinese si"
+    }
+   ],
+   "interference": [],
+   "n_cpu_moe": null,
+   "load_seconds": 4.4,
+   "vram_mb": 13964,
+   "ram_mb": 857,
+   "vram_peak_mb": 14092,
+   "ram_peak_mb": 2278,
+   "gen_tps": 52.3,
+   "prompt_tps": 1054.7,
+   "long_prompt_n": 6812,
+   "same_as_base": null
+  },
+  {
+   "id": "c2",
+   "name": "關閉 Flash Attention",
+   "group": "attn",
+   "quant": "UD-Q3_K_XL",
+   "args": [
+    "-c",
+    "16384",
+    "-np",
+    "1",
+    "-ngl",
+    "99",
+    "-fa",
+    "off"
+   ],
+   "status": "oom",
+   "why": "關閉預設啟用的 Flash Attention (快閃注意力機制)，評估注意力運算加速成效",
+   "steps": [
+    13
+   ],
+   "bench": [],
+   "interference": [],
+   "error": "t: failed to allocate compute pp buffers\n0.02.646.291 E cmn  common_init_: failed to create context with model '/models/unsloth/Inkling-2-Mini-GGUF/Inkling-2-Mini-UD-Q3_K_XL.gguf'\n0.02.646.294 E cmn  common_init_: failed to create context with model '/models/unsloth/Inkling-2-Mini-GGUF/Inkling-2-Mini-UD-Q3_K_XL.gguf'\n0.02.646.297 E srv    load_model: failed to create_context with model '/models/unsloth/Inkling-2-Mini-GGUF/Inkling-2-Mini-UD-Q3_K_XL.gguf'\n0.02.646.310 I srv    operator(): operator(): cleaning up before exit...\n0.02.646.670 E srv  server_run_i: exiting due to model loading error\n"
+  },
+  {
+   "id": "c3",
+   "name": "KV cache Q8 量化",
+   "group": "kv",
+   "quant": "UD-Q3_K_XL",
+   "args": [
+    "-c",
+    "16384",
+    "-np",
+    "1",
+    "-ngl",
+    "99",
+    "-ctk",
+    "q8_0",
+    "-ctv",
+    "q8_0"
+   ],
+   "status": "ok",
+   "why": "啟用 KV cache (鍵值快取) 量化至 Q8_0 (8 位元整數量化格式)，評估節省顯存對推論速度之影響",
+   "steps": [
+    14,
+    15,
+    16,
+    17,
+    18,
+    19
+   ],
+   "bench": [
+    {
+     "id": "s1",
+     "name": "短問答",
+     "prompt_n": 45,
+     "prompt_tps": 142.0,
+     "gen_n": 256,
+     "gen_tps": 52.0,
+     "text": "The user asks in Traditional Chinese: \"用三句話解釋什麼是量化（quantization），以及它對在自己電腦上跑模型有什麼影響。\" Translation: \"Explain in three sentences what quantization is, and what it affects for running models on your own computer.\"\n\nNeed answer in Traditional Chinese likely. Need exactly three sentences? They ask \"用三句話解釋什麼是量化...以及它對...有什麼影響\". We should provide three sentences total. Need be accurate.\n\nQuantization: re"
+    },
+    {
+     "id": "s2",
+     "name": "寫程式",
+     "prompt_n": 57,
+     "prompt_tps": 278.5,
+     "gen_n": 512,
+     "gen_tps": 51.7,
+     "text": "The user asks in Traditional Chinese: \"用 Python 寫一個命令列待辦事項工具：可以新增、列出、完成、刪除項目，資料存在 JSON 檔，附上簡短的使用說明。\" Translation: Write a command-line todo tool in Python: can add, list, complete, delete items, data stored in JSON file, with brief usage instructions.\n\nNeed answer in Traditional Chinese likely. Need provide code and usage. Need think through design.\n\nNeed produce final answer with code. Need ensur"
+    },
+    {
+     "id": "s3",
+     "name": "長輸入",
+     "prompt_n": 6812,
+     "prompt_tps": 1040.0,
+     "gen_n": 128,
+     "gen_tps": 48.3,
+     "text": "The user pasted 30 identical paragraphs in Traditional Chinese about local inference. They ask: \"請用五點條列整理上面這份文件的重點。\" Need answer in Traditional Chinese likely. Need summarize into five bullet points. Need be careful: the document is repetitive; we can note it repeats same content. Need produce five bullets. Need not over-explain. Need ensure no unsupported claims. Let's parse content:\n\nLocal infer"
+    },
+    {
+     "id": "s4",
+     "name": "英文散文",
+     "prompt_n": 37,
+     "prompt_tps": 203.6,
+     "gen_n": 512,
+     "gen_tps": 51.7,
+     "text": "The user wants a short essay in English about why people run language models on their own computers instead of in the cloud. Need produce final answer only. Need ensure essay is short, coherent, maybe 4-6 paragraphs or one cohesive short essay. Need discuss privacy, cost, control, latency, offline/reliability, customization, data sovereignty, security, independence from providers, hardware/softwar"
+    },
+    {
+     "id": "s5",
+     "name": "HTML 程式",
+     "prompt_n": 66,
+     "prompt_tps": 328.0,
+     "gen_n": 512,
+     "gen_tps": 51.6,
+     "text": "The user wants a Pomodoro timer webpage in a single HTML file. They wrote in Traditional Chinese (Taiwan style: \"用單一 HTML 檔寫一個番茄鐘計時器網頁：可以開始、暫停、重設，時間到會顯示提醒，CSS 和 JavaScript 都寫在同一個檔案。\").\n\nI should respond in Traditional Chinese since they asked in Traditional Chinese.\n\nRequirements:\n- Single HTML file\n- Pomodoro timer\n- Start, pause, reset\n- Alert when time is up\n- CSS and JS in the same file\n\nLet m"
+    }
+   ],
+   "interference": [],
+   "n_cpu_moe": null,
+   "load_seconds": 3.4,
+   "vram_mb": 13622,
+   "ram_mb": 500,
+   "vram_peak_mb": 13760,
+   "ram_peak_mb": 1457,
+   "gen_tps": 51.8,
+   "prompt_tps": 1040.0,
+   "long_prompt_n": 6812,
+   "same_as_base": true
+  },
+  {
+   "id": "c4",
+   "name": "DSpark draft 2",
+   "group": "spec",
+   "quant": "UD-Q3_K_XL",
+   "args": [
+    "-c",
+    "16384",
+    "-np",
+    "1",
+    "-ngl",
+    "99",
+    "-md",
+    "@./models/unsloth/Inkling-2-Mini-GGUF/dspark-Inkling-2-Mini-Q8_0.gguf",
+    "--spec-type",
+    "draft-dspark",
+    "--spec-draft-n-max",
+    "2",
+    "-ngld",
+    "99"
+   ],
+   "status": "ok",
+   "why": "採用 Unsloth 模型卡建議之 draft (草稿模型預測) 長度 2 進行 speculative decoding (推測解碼)",
+   "steps": [
+    20,
+    21,
+    22,
+    23,
+    24,
+    25
+   ],
+   "bench": [
+    {
+     "id": "s1",
+     "name": "短問答",
+     "prompt_n": 45,
+     "prompt_tps": 131.0,
+     "gen_n": 256,
+     "gen_tps": 51.2,
+     "draft_n": 272,
+     "draft_accepted": 119,
+     "text": "The user asks in Traditional Chinese: \"用三句話解釋什麼是量化（quantization），以及它對在自己電腦上跑模型有什麼影響。\" Translation: \"Explain in three sentences what quantization is, and what it means for running models on your own computer.\"\n\nNeed answer in Traditional Chinese likely. Need exactly three sentences? They ask \"用三句話解釋\" = use three sentences to explain. Need ensure exactly three sentences. Content: quantization reduce"
+    },
+    {
+     "id": "s2",
+     "name": "寫程式",
+     "prompt_n": 57,
+     "prompt_tps": 277.6,
+     "gen_n": 512,
+     "gen_tps": 56.7,
+     "draft_n": 487,
+     "draft_accepted": 267,
+     "text": "The user asks in Traditional Chinese: \"用 Python 寫一個命令列待辦事項工具：可以新增、列出、完成、刪除項目，資料存在 JSON 檔，附上簡短的使用說明。\" Translation: Write a command-line todo tool in Python: can add, list, complete, delete items, data stored in JSON file, with brief usage instructions.\n\nNeed answer in Traditional Chinese likely. Need provide code and usage. Need think through design.\n\nNeed produce final answer with code. Need ensur"
+    },
+    {
+     "id": "s3",
+     "name": "長輸入",
+     "prompt_n": 6812,
+     "prompt_tps": 1042.3,
+     "gen_n": 128,
+     "gen_tps": 52.2,
+     "draft_n": 122,
+     "draft_accepted": 65,
+     "text": "The user pasted 30 identical paragraphs in Traditional Chinese about local inference. They ask: \"請用五點條列整理上面這份文件的重點。\" Need answer in Traditional Chinese likely. Need summarize into five bullet points. Need be careful: the document is repetitive; we can note it repeats same content. Need produce five bullets. Need not over-explain. Need include key points: definition of local inference; factors affe"
+    },
+    {
+     "id": "s4",
+     "name": "英文散文",
+     "prompt_n": 37,
+     "prompt_tps": 199.9,
+     "gen_n": 512,
+     "gen_tps": 52.4,
+     "draft_n": 530,
+     "draft_accepted": 245,
+     "text": "The user wants a short essay in English about why people run language models on their own computers instead of in the cloud. Need produce final answer only. Need ensure essay is short, coherent, maybe 4-6 paragraphs or ~300-450 words. Need discuss privacy, cost, control, latency/offline, customization, data sovereignty, security, independence from providers, hardware/performance, experimentation. "
+    },
+    {
+     "id": "s5",
+     "name": "HTML 程式",
+     "prompt_n": 66,
+     "prompt_tps": 317.4,
+     "gen_n": 512,
+     "gen_tps": 58.9,
+     "draft_n": 463,
+     "draft_accepted": 279,
+     "text": "The user wants a Pomodoro timer webpage in a single HTML file. They wrote in Traditional Chinese (Taiwan style: \"用單一 HTML 檔寫一個番茄鐘計時器網頁：可以開始、暫停、重設，時間到會顯示提醒，CSS 和 JavaScript 都寫在同一個檔案。\").\n\nI should respond in Traditional Chinese since they asked in Traditional Chinese.\n\nRequirements:\n- Single HTML file\n- Pomodoro timer\n- Start, pause, reset\n- Time-up alert/notification\n- CSS and JS in the same file\n\n"
+    }
+   ],
+   "interference": [],
+   "n_cpu_moe": null,
+   "load_seconds": 4.5,
+   "vram_mb": 15382,
+   "ram_mb": 759,
+   "vram_peak_mb": 15508,
+   "ram_peak_mb": 2272,
+   "gen_tps": 54.8,
+   "prompt_tps": 1042.3,
+   "long_prompt_n": 6812,
+   "draft_accept": 0.52,
+   "same_as_base": false
+  },
+  {
+   "id": "c5",
+   "name": "DSpark draft 3",
+   "group": "spec",
+   "quant": "UD-Q3_K_XL",
+   "args": [
+    "-c",
+    "16384",
+    "-np",
+    "1",
+    "-ngl",
+    "99",
+    "-md",
+    "@./models/unsloth/Inkling-2-Mini-GGUF/dspark-Inkling-2-Mini-Q8_0.gguf",
+    "--spec-type",
+    "draft-dspark",
+    "--spec-draft-n-max",
+    "3",
+    "-ngld",
+    "99"
+   ],
+   "status": "ok",
+   "why": "採用 llama.cpp 預設之 draft 長度 3，對比長度 2 觀察接受率與速度變化",
+   "steps": [
+    26,
+    27,
+    28,
+    29,
+    30,
+    31
+   ],
+   "bench": [
+    {
+     "id": "s1",
+     "name": "短問答",
+     "prompt_n": 45,
+     "prompt_tps": 130.0,
+     "gen_n": 256,
+     "gen_tps": 52.0,
+     "draft_n": 360,
+     "draft_accepted": 134,
+     "text": "The user asks in Traditional Chinese: \"用三句話解釋什麼是量化（quantization），以及它對在自己電腦上跑模型有什麼影響。\" Translation: \"Explain in three sentences what quantization is, and what it affects for running models on your own computer.\"\n\nNeed answer in Traditional Chinese likely. Need exactly three sentences? They ask \"用三句話解釋什麼是量化...以及它對...有什麼影響\". We should provide three sentences total. Need be accurate.\n\nQuantization: re"
+    },
+    {
+     "id": "s2",
+     "name": "寫程式",
+     "prompt_n": 57,
+     "prompt_tps": 275.7,
+     "gen_n": 512,
+     "gen_tps": 65.1,
+     "draft_n": 573,
+     "draft_accepted": 319,
+     "text": "The user asks in Traditional Chinese: \"用 Python 寫一個命令列待辦事項工具：可以新增、列出、完成、刪除項目，資料存在 JSON 檔，附上簡短的使用說明。\" Translation: Write a command-line todo tool in Python: can add, list, complete, delete items, data stored in JSON file, with brief usage instructions.\n\nNeed answer in Traditional Chinese likely. Need provide code and usage. Need ensure code robust. We can give a single-file script `todo.py` using a"
+    },
+    {
+     "id": "s3",
+     "name": "長輸入",
+     "prompt_n": 6812,
+     "prompt_tps": 1041.3,
+     "gen_n": 128,
+     "gen_tps": 52.5,
+     "draft_n": 168,
+     "draft_accepted": 71,
+     "text": "The user pasted 30 identical paragraphs in Traditional Chinese about local inference. They ask: \"請用五點條列整理上面這份文件的重點。\" Need answer in Traditional Chinese likely. Need summarize into five bullet points. Need be careful: the document is repetitive; we can note it repeats same content. Need produce five bullets. Need not over-explain. Need include key points: definition of local inference; factors affe"
+    },
+    {
+     "id": "s4",
+     "name": "英文散文",
+     "prompt_n": 37,
+     "prompt_tps": 196.7,
+     "gen_n": 512,
+     "gen_tps": 49.5,
+     "draft_n": 770,
+     "draft_accepted": 253,
+     "text": "The user wants a short essay in English about why people run language models on their own computers instead of in the cloud. Need produce final answer only. Need ensure essay is short, coherent, maybe 4-6 paragraphs or one cohesive short essay. Need discuss privacy, cost, control, latency, offline/reliability, customization, data sovereignty, security, independence from providers, experimentation."
+    },
+    {
+     "id": "s5",
+     "name": "HTML 程式",
+     "prompt_n": 66,
+     "prompt_tps": 316.0,
+     "gen_n": 512,
+     "gen_tps": 56.5,
+     "draft_n": 659,
+     "draft_accepted": 291,
+     "text": "The user wants a Pomodoro timer webpage in a single HTML file. They wrote in Traditional Chinese (Taiwan style: \"用單一 HTML 檔寫一個番茄鐘計時器網頁：可以開始、暫停、重設，時間到會顯示提醒，CSS 和 JavaScript 都寫在同一個檔案。\").\n\nI should respond in Traditional Chinese since they asked in Traditional Chinese.\n\nRequirements:\n- Single HTML file\n- Pomodoro timer\n- Start, pause, reset\n- Time-up alert/notification\n- CSS and JS in the same file\n\n"
+    }
+   ],
+   "interference": [],
+   "n_cpu_moe": null,
+   "load_seconds": 4.3,
+   "vram_mb": 15386,
+   "ram_mb": 669,
+   "vram_peak_mb": 15512,
+   "ram_peak_mb": 2190,
+   "gen_tps": 55.8,
+   "prompt_tps": 1041.3,
+   "long_prompt_n": 6812,
+   "draft_accept": 0.422,
+   "same_as_base": true
+  },
+  {
+   "id": "c6",
+   "name": "IQ3 量化",
+   "group": "quant",
+   "quant": "UD-IQ3_XXS",
+   "args": [
+    "-c",
+    "16384",
+    "-np",
+    "1",
+    "-ngl",
+    "99"
+   ],
+   "status": "ok",
+   "why": "比較用極限壓縮量化檔且可全入顯存，評估 3-bit 級別對速度與品質之影響",
+   "steps": [
+    32,
+    33,
+    34,
+    35,
+    36,
+    37
+   ],
+   "bench": [
+    {
+     "id": "s1",
+     "name": "短問答",
+     "prompt_n": 45,
+     "prompt_tps": 157.0,
+     "gen_n": 256,
+     "gen_tps": 55.5,
+     "text": "The user asks in Traditional Chinese: \"用三句話解釋什麼是量化（quantization），以及它對在自己電腦上跑模型有什麼影響。\" Need answer in Traditional Chinese likely. Need explain in three sentences. Need ensure exactly three sentences? They ask 用三句話解釋什麼是量化，以及它對在自己電腦上跑模型有什麼影響。 We can provide three sentences total. Need be accurate: quantization reduces precision of model weights/activations (e.g., FP32 -> INT8/INT4) to shrink memory a"
+    },
+    {
+     "id": "s2",
+     "name": "寫程式",
+     "prompt_n": 57,
+     "prompt_tps": 292.8,
+     "gen_n": 512,
+     "gen_tps": 55.0,
+     "text": "The user asks in Traditional Chinese: \"用 Python 寫一個命令列待辦事項工具：可以新增、列出、完成、刪除項目，資料存在 JSON 檔，附上簡短的使用說明。\" Translation: Write a command-line todo tool in Python: can add, list, complete, delete items, data stored in JSON file, with brief usage instructions.\n\nNeed answer in Traditional Chinese likely. Need provide code and usage. Need ensure code is correct. Let's design a simple CLI using argparse, JSON"
+    },
+    {
+     "id": "s3",
+     "name": "長輸入",
+     "prompt_n": 6812,
+     "prompt_tps": 1036.1,
+     "gen_n": 128,
+     "gen_tps": 50.6,
+     "text": "The user pasted 30 identical paragraphs and asks in Traditional Chinese: \"請用五點條列整理上面這份文件的重點。\" Need answer with five bullet points summarizing the document. Need be careful: document is repetitive identical paragraphs; summarize unique content. Need produce five bullets. Need likely mention local inference definition, speed factors (params, active params, quantization bits, VRAM fit, offload layers"
+    },
+    {
+     "id": "s4",
+     "name": "英文散文",
+     "prompt_n": 37,
+     "prompt_tps": 215.6,
+     "gen_n": 512,
+     "gen_tps": 55.1,
+     "text": "The user wants a short essay in English about why people run language models on their own computers instead of in the cloud. Need produce final answer only. Need ensure essay is concise, coherent, maybe 4-6 paragraphs or one short essay. Need discuss privacy, cost, control, latency, offline/reliability, customization, data sovereignty, security, independence from vendor lock-in, experimentation. A"
+    },
+    {
+     "id": "s5",
+     "name": "HTML 程式",
+     "prompt_n": 66,
+     "prompt_tps": 338.5,
+     "gen_n": 512,
+     "gen_tps": 55.0,
+     "text": "The user wants a Pomodoro timer webpage in a single HTML file with start, pause, reset functionality, and a notification when time is up. They wrote in Traditional Chinese (Taiwan), so I should respond in Traditional Chinese and make the UI in Traditional Chinese.\n\nLet me design a nice Pomodoro timer:\n- Default 25 minutes (Pomodoro), maybe with presets for focus/short break/long break\n- Start, pau"
+    }
+   ],
+   "interference": [],
+   "n_cpu_moe": null,
+   "load_seconds": 6.3,
+   "vram_mb": 12142,
+   "ram_mb": 1596,
+   "vram_peak_mb": 12278,
+   "ram_peak_mb": 3019,
+   "gen_tps": 55.1,
+   "prompt_tps": 1036.1,
+   "long_prompt_n": 6812,
+   "same_as_base": false
+  },
+  {
+   "id": "c7",
+   "name": "IQ4 MoE 放 CPU",
+   "group": "offload",
+   "quant": "UD-IQ4_XS",
+   "args": [
+    "-c",
+    "16384",
+    "-np",
+    "1",
+    "-ngl",
+    "99",
+    "--n-cpu-moe",
+    "12"
+   ],
+   "status": "ok",
+   "why": "模型大小超出 VRAM (視訊記憶體) 限制，設定將 MoE (混合專家架構) 專家層卸載至 CPU (中央處理器)",
+   "steps": [
+    38,
+    39,
+    40,
+    41,
+    42,
+    43
+   ],
+   "bench": [
+    {
+     "id": "s1",
+     "name": "短問答",
+     "prompt_n": 45,
+     "prompt_tps": 39.2,
+     "gen_n": 256,
+     "gen_tps": 22.0,
+     "text": "The user asks in Traditional Chinese: \"用三句話解釋什麼是量化（quantization），以及它對在自己電腦上跑模型有什麼影響。\" Translation: \"Explain in three sentences what quantization is, and what it means for running models on your own computer.\"\n\nNeed answer in Traditional Chinese likely. Need exactly three sentences? They ask \"用三句話解釋什麼是量化（quantization），以及它對在自己電腦上跑模型有什麼影響。\" So final should be three sentences. Need ensure accurate.\n\nC"
+    },
+    {
+     "id": "s2",
+     "name": "寫程式",
+     "prompt_n": 57,
+     "prompt_tps": 31.4,
+     "gen_n": 512,
+     "gen_tps": 22.0,
+     "text": "The user wants a Python command-line todo tool in Traditional Chinese (the request is in Traditional Chinese). Need provide code and brief usage. Need think through design.\n\nRequirements: add, list, complete, delete items; data in JSON file; brief usage instructions.\n\nNeed produce final answer with code. Should be practical. Could include a single-file script `todo.py`. Features:\n- JSON file defau"
+    },
+    {
+     "id": "s3",
+     "name": "長輸入",
+     "prompt_n": 6812,
+     "prompt_tps": 278.7,
+     "gen_n": 128,
+     "gen_tps": 21.4,
+     "text": "The user pasted 30 identical paragraphs in Traditional Chinese about local inference. They ask: \"請用五點條列整理上面這份文件的重點。\" Need answer in Traditional Chinese likely. Need summarize into five bullet points. Need be careful: document is repetitive; summarize unique content. Need produce five bullets. Need mention local inference definition, speed factors, prefill vs decode, speculative decoding, maybe pra"
+    },
+    {
+     "id": "s4",
+     "name": "英文散文",
+     "prompt_n": 37,
+     "prompt_tps": 43.4,
+     "gen_n": 512,
+     "gen_tps": 21.9,
+     "text": "The user asks for a short essay in English about why people run language models on their own computers instead of in the cloud. Need produce final essay. Need ensure accuracy: reasons include privacy/data control, cost for high usage, latency/offline, customization/fine-tuning, independence from providers, security/compliance, experimentation, reliability. Need be concise. No need for citations. N"
+    },
+    {
+     "id": "s5",
+     "name": "HTML 程式",
+     "prompt_n": 66,
+     "prompt_tps": 37.6,
+     "gen_n": 512,
+     "gen_tps": 22.0,
+     "text": "The user wants a Pomodoro timer webpage in a single HTML file with start, pause, reset functionality, and a notification when time is up. They wrote in Traditional Chinese (Taiwan style), so I should respond in Traditional Chinese.\n\nLet me create a nice, polished Pomodoro timer:\n- 25 minutes work, 5 minutes break (classic Pomodoro)\n- Start, pause, reset buttons\n- Time display\n- Notification when t"
+    }
+   ],
+   "interference": [],
+   "n_cpu_moe": 12,
+   "load_seconds": 8.4,
+   "vram_mb": 9402,
+   "ram_mb": 2424,
+   "vram_peak_mb": 9478,
+   "ram_peak_mb": 3787,
+   "gen_tps": 22.0,
+   "prompt_tps": 278.7,
+   "long_prompt_n": 6812,
+   "same_as_base": false
+  }
+ ],
+ "best": "c5",
+ "math": [
+  {
+   "quant": "UD-Q3_K_XL",
+   "config": "c5",
+   "config_name": "DSpark draft 3",
+   "mode": "think",
+   "items": [
+    {
+     "id": "m1",
+     "name": "雞兔同籠",
+     "answer": "12",
+     "got": "12",
+     "correct": true,
+     "finish": "stop",
+     "seconds": 10.0,
+     "tokens": 530,
+     "reasoning_chars": 1233,
+     "gen_tps": 55.2,
+     "step": 50
+    },
+    {
+     "id": "m2",
+     "name": "鐘面夾角",
+     "answer": "7.5",
+     "got": "15/2",
+     "correct": true,
+     "finish": "stop",
+     "seconds": 10.8,
+     "tokens": 623,
+     "reasoning_chars": 1407,
+     "gen_tps": 59.3,
+     "step": 51
+    },
+    {
+     "id": "m3",
+     "name": "河內塔",
+     "answer": "127",
+     "got": "127",
+     "correct": true,
+     "finish": "stop",
+     "seconds": 31.3,
+     "tokens": 1592,
+     "reasoning_chars": 3957,
+     "gen_tps": 51.5,
+     "step": 52
+    },
+    {
+     "id": "m4",
+     "name": "階乘尾數",
+     "answer": "24",
+     "got": "24",
+     "correct": true,
+     "finish": "stop",
+     "seconds": 10.7,
+     "tokens": 537,
+     "reasoning_chars": 1365,
+     "gen_tps": 51.8,
+     "step": 53
+    },
+    {
+     "id": "m5",
+     "name": "蒙提霍爾",
+     "answer": "2/3",
+     "got": "2/3",
+     "correct": true,
+     "finish": "stop",
+     "seconds": 23.5,
+     "tokens": 1216,
+     "reasoning_chars": 3211,
+     "gen_tps": 52.5,
+     "step": 54
+    },
+    {
+     "id": "m6",
+     "name": "生日問題",
+     "answer": "23",
+     "got": "23",
+     "correct": true,
+     "finish": "stop",
+     "seconds": 63.6,
+     "tokens": 3831,
+     "reasoning_chars": 7449,
+     "gen_tps": 60.5,
+     "step": 55
+    },
+    {
+     "id": "m7",
+     "name": "韓信點兵",
+     "answer": "23",
+     "got": "23",
+     "correct": true,
+     "finish": "stop",
+     "seconds": 18.1,
+     "tokens": 1050,
+     "reasoning_chars": 2043,
+     "gen_tps": 59.5,
+     "step": 56
+    },
+    {
+     "id": "m8",
+     "name": "排容原理",
+     "answer": "266",
+     "got": "266",
+     "correct": true,
+     "finish": "stop",
+     "seconds": 15.5,
+     "tokens": 953,
+     "reasoning_chars": 1951,
+     "gen_tps": 62.8,
+     "step": 57
+    },
+    {
+     "id": "m9",
+     "name": "猴子分桃",
+     "answer": "3121",
+     "got": "",
+     "correct": false,
+     "finish": "length",
+     "seconds": 139.8,
+     "tokens": 8192,
+     "reasoning_chars": 18793,
+     "gen_tps": 58.7,
+     "excerpt": "ot N4? Wait N3=5x4+1 = if x4=19 ->96. I earlier wrote \"x3=4a3 and x3=5a4+1\" and substituted x4=5t+4 -> x3=25t+21. For t=3, x3=96. Then x3=4a3 -> a3=24. Good. I then found monkey3 requires u? That was a different parametrization. Good.\n\nNow continue with N3=96 for t=3. Need N2 such that N2=5x3+1, x3=24 -> N2=121. Require N2 divisible by4? N2=4x2. 121 not divisible by4 -> invalid. So t=3 invalid. The valid t must make N3 divisible by4 AND the resulting x3 leading to N2 divisible by4, etc. General process matches.\n\nBut wait: The equation N3=5x4+1 and N3=4x3 means N3=5( N4/4)+1 =5((20t+16)/4)+1=5(",
+     "step": 58
+    },
+    {
+     "id": "m10",
+     "name": "水池問題",
+     "answer": "3",
+     "got": "3",
+     "correct": true,
+     "finish": "stop",
+     "seconds": 11.4,
+     "tokens": 652,
+     "reasoning_chars": 1345,
+     "gen_tps": 59.3,
+     "step": 59
+    }
+   ],
+   "steps": [
+    49,
+    50,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56,
+    57,
+    58,
+    59
+   ],
+   "correct": 9,
+   "total": 10,
+   "seconds": 334.7,
+   "tokens": 19176,
+   "looped": 1
+  },
+  {
+   "quant": "UD-IQ3_XXS",
+   "config": "c6",
+   "config_name": "IQ3 量化",
+   "mode": "think",
+   "items": [
+    {
+     "id": "m1",
+     "name": "雞兔同籠",
+     "answer": "12",
+     "got": "12",
+     "correct": true,
+     "finish": "stop",
+     "seconds": 6.9,
+     "tokens": 345,
+     "reasoning_chars": 732,
+     "gen_tps": 52.3,
+     "step": 61
+    },
+    {
+     "id": "m2",
+     "name": "鐘面夾角",
+     "answer": "7.5",
+     "got": "15/2",
+     "correct": true,
+     "finish": "stop",
+     "seconds": 12.3,
+     "tokens": 624,
+     "reasoning_chars": 1443,
+     "gen_tps": 51.7,
+     "step": 62
+    },
+    {
+     "id": "m3",
+     "name": "河內塔",
+     "answer": "127",
+     "got": "127",
+     "correct": true,
+     "finish": "stop",
+     "seconds": 20.6,
+     "tokens": 1039,
+     "reasoning_chars": 868,
+     "gen_tps": 51.1,
+     "step": 63
+    },
+    {
+     "id": "m4",
+     "name": "階乘尾數",
+     "answer": "24",
+     "got": "24",
+     "correct": true,
+     "finish": "stop",
+     "seconds": 10.7,
+     "tokens": 536,
+     "reasoning_chars": 1012,
+     "gen_tps": 51.4,
+     "step": 64
+    },
+    {
+     "id": "m5",
+     "name": "蒙提霍爾",
+     "answer": "2/3",
+     "got": "2/3",
+     "correct": true,
+     "finish": "stop",
+     "seconds": 34.0,
+     "tokens": 1720,
+     "reasoning_chars": 2249,
+     "gen_tps": 51.0,
+     "step": 65
+    },
+    {
+     "id": "m6",
+     "name": "生日問題",
+     "answer": "23",
+     "got": "23",
+     "correct": true,
+     "finish": "stop",
+     "seconds": 34.5,
+     "tokens": 1751,
+     "reasoning_chars": 3756,
+     "gen_tps": 51.2,
+     "step": 66
+    },
+    {
+     "id": "m7",
+     "name": "韓信點兵",
+     "answer": "23",
+     "got": "23",
+     "correct": true,
+     "finish": "stop",
+     "seconds": 12.0,
+     "tokens": 610,
+     "reasoning_chars": 1238,
+     "gen_tps": 52.1,
+     "step": 67
+    },
+    {
+     "id": "m8",
+     "name": "排容原理",
+     "answer": "266",
+     "got": "266",
+     "correct": true,
+     "finish": "stop",
+     "seconds": 16.6,
+     "tokens": 846,
+     "reasoning_chars": 1481,
+     "gen_tps": 51.8,
+     "step": 68
+    },
+    {
+     "id": "m9",
+     "name": "猴子分桃",
+     "answer": "3121",
+     "got": "3121",
+     "correct": true,
+     "finish": "stop",
+     "seconds": 82.5,
+     "tokens": 4142,
+     "reasoning_chars": 9193,
+     "gen_tps": 50.4,
+     "step": 69
+    },
+    {
+     "id": "m10",
+     "name": "水池問題",
+     "answer": "3",
+     "got": "3",
+     "correct": true,
+     "finish": "stop",
+     "seconds": 12.4,
+     "tokens": 628,
+     "reasoning_chars": 1353,
+     "gen_tps": 52.1,
+     "step": 70
+    }
+   ],
+   "steps": [
+    60,
+    61,
+    62,
+    63,
+    64,
+    65,
+    66,
+    67,
+    68,
+    69,
+    70
+   ],
+   "correct": 10,
+   "total": 10,
+   "seconds": 242.5,
+   "tokens": 12241,
+   "looped": 0
+  },
+  {
+   "quant": "UD-IQ4_XS",
+   "config": "c7",
+   "config_name": "IQ4 MoE 放 CPU",
+   "mode": "think",
+   "items": [
+    {
+     "id": "m1",
+     "name": "雞兔同籠",
+     "answer": "12",
+     "got": "12",
+     "correct": true,
+     "finish": "stop",
+     "seconds": 24.0,
+     "tokens": 473,
+     "reasoning_chars": 1090,
+     "gen_tps": 21.6,
+     "step": 72
+    },
+    {
+     "id": "m2",
+     "name": "鐘面夾角",
+     "answer": "7.5",
+     "got": "15/2",
+     "correct": true,
+     "finish": "stop",
+     "seconds": 50.1,
+     "tokens": 1021,
+     "reasoning_chars": 2513,
+     "gen_tps": 21.3,
+     "step": 73
+    },
+    {
+     "id": "m3",
+     "name": "河內塔",
+     "answer": "127",
+     "got": "127",
+     "correct": true,
+     "finish": "stop",
+     "seconds": 37.0,
+     "tokens": 722,
+     "reasoning_chars": 690,
+     "gen_tps": 21.2,
+     "step": 74
+    },
+    {
+     "id": "m4",
+     "name": "階乘尾數",
+     "answer": "24",
+     "got": "24",
+     "correct": true,
+     "finish": "stop",
+     "seconds": 41.3,
+     "tokens": 835,
+     "reasoning_chars": 2082,
+     "gen_tps": 21.2,
+     "step": 75
+    },
+    {
+     "id": "m5",
+     "name": "蒙提霍爾",
+     "answer": "2/3",
+     "got": "2/3",
+     "correct": true,
+     "finish": "stop",
+     "seconds": 80.3,
+     "tokens": 1622,
+     "reasoning_chars": 4545,
+     "gen_tps": 21.0,
+     "step": 76
+    },
+    {
+     "id": "m6",
+     "name": "生日問題",
+     "answer": "23",
+     "got": "23",
+     "correct": true,
+     "finish": "stop",
+     "seconds": 74.8,
+     "tokens": 1515,
+     "reasoning_chars": 3796,
+     "gen_tps": 21.1,
+     "step": 77
+    },
+    {
+     "id": "m7",
+     "name": "韓信點兵",
+     "answer": "23",
+     "got": "23",
+     "correct": true,
+     "finish": "stop",
+     "seconds": 28.4,
+     "tokens": 550,
+     "reasoning_chars": 1067,
+     "gen_tps": 21.5,
+     "step": 78
+    },
+    {
+     "id": "m8",
+     "name": "排容原理",
+     "answer": "266",
+     "got": "266",
+     "correct": true,
+     "finish": "stop",
+     "seconds": 45.3,
+     "tokens": 910,
+     "reasoning_chars": 1917,
+     "gen_tps": 21.5,
+     "step": 79
+    },
+    {
+     "id": "m9",
+     "name": "猴子分桃",
+     "answer": "3121",
+     "got": "",
+     "correct": false,
+     "finish": "length",
+     "seconds": 392.8,
+     "tokens": 8192,
+     "reasoning_chars": 17902,
+     "gen_tps": 21.0,
+     "excerpt": " (100r+95+1)/4 = (100r+96)/4 =25r+24. Automatic ≡? x3≡4 mod5? 25r+24 ≡4 yes. For eq2 (4x2=5x3+1) need x3≡3 mod4. x3 mod4 = (25r+24) ≡ r+0 ≡r mod4 (24≡0). Need r≡3 mod4. Let r=4s+3. Then x3=25(4s+3)+24 =100s+75+24 =100s+99. x5=16(4s+3)+15 =64s+48+15? Wait x5=16r+15, r=4s+3 -> x5=16(4s+3)+15 =64s+48+15=64s+63. x4=20(4s+3)+19 =80s+60+19 =80s+79. Matches earlier with m=s. Minimal s=0: x5=63? Wait hold on: we previously set m=0 for x4=79 and got x3=99; x5? We didn't compute x5 for m=0. Let's recalc: In earlier chain we set x4=20n+19; then condition for x3≡19 mod20 was n≡3 mod4. For m=0, n=3, x4=20*",
+     "step": 80
+    },
+    {
+     "id": "m10",
+     "name": "水池問題",
+     "answer": "3",
+     "got": "3",
+     "correct": true,
+     "finish": "stop",
+     "seconds": 36.0,
+     "tokens": 709,
+     "reasoning_chars": 1761,
+     "gen_tps": 21.4,
+     "step": 81
+    }
+   ],
+   "steps": [
+    71,
+    72,
+    73,
+    74,
+    75,
+    76,
+    77,
+    78,
+    79,
+    80,
+    81
+   ],
+   "correct": 9,
+   "total": 10,
+   "seconds": 810.0,
+   "tokens": 16549,
+   "looped": 1
+  },
+  {
+   "quant": "UD-Q3_K_XL",
+   "config": "c5",
+   "config_name": "DSpark draft 3",
+   "mode": "tool",
+   "items": [
+    {
+     "id": "m1",
+     "name": "雞兔同籠",
+     "answer": "12",
+     "got": "12",
+     "correct": true,
+     "finish": "stop",
+     "seconds": 13.2,
+     "tokens": 654,
+     "reasoning_chars": 1237,
+     "tool_calls": 1,
+     "gen_tps": 51.7,
+     "step": 83
+    },
+    {
+     "id": "m2",
+     "name": "鐘面夾角",
+     "answer": "7.5",
+     "got": "15/2",
+     "correct": true,
+     "finish": "stop",
+     "seconds": 15.5,
+     "tokens": 804,
+     "reasoning_chars": 796,
+     "tool_calls": 2,
+     "gen_tps": 53.6,
+     "step": 84
+    },
+    {
+     "id": "m3",
+     "name": "河內塔",
+     "answer": "127",
+     "got": "127",
+     "correct": true,
+     "finish": "stop",
+     "seconds": 15.8,
+     "tokens": 819,
+     "reasoning_chars": 875,
+     "tool_calls": 1,
+     "gen_tps": 52.9,
+     "step": 85
+    },
+    {
+     "id": "m4",
+     "name": "階乘尾數",
+     "answer": "24",
+     "got": "24",
+     "correct": true,
+     "finish": "stop",
+     "seconds": 12.5,
+     "tokens": 599,
+     "reasoning_chars": 771,
+     "tool_calls": 1,
+     "gen_tps": 50.7,
+     "step": 86
+    },
+    {
+     "id": "m5",
+     "name": "蒙提霍爾",
+     "answer": "2/3",
+     "got": "2/3",
+     "correct": true,
+     "finish": "stop",
+     "seconds": 20.1,
+     "tokens": 986,
+     "reasoning_chars": 3202,
+     "tool_calls": 0,
+     "gen_tps": 49.9,
+     "step": 87
+    },
+    {
+     "id": "m6",
+     "name": "生日問題",
+     "answer": "23",
+     "got": "23",
+     "correct": true,
+     "finish": "stop",
+     "seconds": 18.5,
+     "tokens": 932,
+     "reasoning_chars": 1223,
+     "tool_calls": 1,
+     "gen_tps": 49.5,
+     "step": 88
+    },
+    {
+     "id": "m7",
+     "name": "韓信點兵",
+     "answer": "23",
+     "got": "23",
+     "correct": true,
+     "finish": "stop",
+     "seconds": 14.6,
+     "tokens": 729,
+     "reasoning_chars": 586,
+     "tool_calls": 1,
+     "gen_tps": 48.6,
+     "step": 89
+    },
+    {
+     "id": "m8",
+     "name": "排容原理",
+     "answer": "266",
+     "got": "266",
+     "correct": true,
+     "finish": "stop",
+     "seconds": 17.4,
+     "tokens": 903,
+     "reasoning_chars": 1080,
+     "tool_calls": 1,
+     "gen_tps": 51.1,
+     "step": 90
+    },
+    {
+     "id": "m9",
+     "name": "猴子分桃",
+     "answer": "3121",
+     "got": "3121",
+     "correct": true,
+     "finish": "stop",
+     "seconds": 156.5,
+     "tokens": 8830,
+     "reasoning_chars": 9236,
+     "tool_calls": 2,
+     "gen_tps": 56.4,
+     "step": 91
+    },
+    {
+     "id": "m10",
+     "name": "水池問題",
+     "answer": "3",
+     "got": "3",
+     "correct": true,
+     "finish": "stop",
+     "seconds": 19.7,
+     "tokens": 1031,
+     "reasoning_chars": 863,
+     "tool_calls": 1,
+     "gen_tps": 50.7,
+     "step": 92
+    }
+   ],
+   "steps": [
+    82,
+    83,
+    84,
+    85,
+    86,
+    87,
+    88,
+    89,
+    90,
+    91,
+    92
+   ],
+   "correct": 10,
+   "total": 10,
+   "seconds": 303.8,
+   "tokens": 16287,
+   "looped": 0,
+   "tool_calls": 11
+  }
+ ],
+ "tetris": {
+  "quant": "UD-Q3_K_XL",
+  "config": "c5",
+  "config_name": "DSpark draft 3",
+  "runs": [
+   {
+    "run": 1,
+    "rounds": [
+     {
+      "round": 1,
+      "seconds": 285.5,
+      "tokens": 16066,
+      "finish": "length",
+      "chars": 0,
+      "gen_tps": 56.4,
+      "step": 101,
+      "errors": [
+       "沒有寫出完整的 HTML（可能被 token 上限截斷：length）"
+      ],
+      "excerpt": " board.width = COLS * CELL * dpr;\n  board.height = ROWS * CELL * dpr;\n  ctx.scale(dpr, dpr);\n\n  const nextCanvas = document.getElementById('next');\n  const pctx = nextCanvas.getContext('2d');\n  nextCanvas.width = 4 * PS * dpr;\n  nextCanvas.height = 4 * PS * dpr;\n  pctx.scale(dpr, dpr);\n\n  // ---------- DOM ----------\n  const overlay = document.getElementById('overlay');\n  const scoreEl = document.getElementById('score');\n  const linesEl = document.getElementById('lines');\n  const levelEl = document.getElementById('level');\n  const bestEl = document.getElementById('best');\n  const touchControls"
+     },
+     {
+      "round": 2,
+      "seconds": 227.1,
+      "tokens": 15916,
+      "finish": "stop",
+      "chars": 13817,
+      "gen_tps": 70.3,
+      "step": 102,
+      "errors": []
+     }
+    ],
+    "delivered": true,
+    "fixed": true,
+    "seed": 42,
+    "errors": [],
+    "seconds": 512.6,
+    "tokens": 31982,
+    "checks": {
+     "items": [
+      {
+       "id": "c1",
+       "text": "打開頁面就看到 10 欄 × 20 列的遊戲區，並且看得出怎麼開始玩",
+       "how": ""
+      },
+      {
+       "id": "c2",
+       "text": "方塊會自己一格一格往下掉",
+       "how": ""
+      },
+      {
+       "id": "c3",
+       "text": "按左右方向鍵可以左右移動方塊，碰到牆或其他方塊不會穿過去",
+       "how": ""
+      },
+      {
+       "id": "c4",
+       "text": "按上方向鍵可以旋轉方塊",
+       "how": ""
+      },
+      {
+       "id": "c5",
+       "text": "按下方向鍵會加速往下；按空白鍵會直接落到底",
+       "how": ""
+      },
+      {
+       "id": "c6",
+       "text": "有 I、O、T、S、Z、J、L 七種形狀",
+       "how": ""
+      },
+      {
+       "id": "c7",
+       "text": "一整行填滿就會消掉，上面的方塊跟著往下掉",
+       "how": ""
+      },
+      {
+       "id": "c8",
+       "text": "有分數，消掉行會加分",
+       "how": ""
+      },
+      {
+       "id": "c9",
+       "text": "有「下一個方塊」的預覽",
+       "how": ""
+      },
+      {
+       "id": "c10",
+       "text": "方塊疊到頂會顯示遊戲結束，而且可以重新開始",
+       "how": ""
+      }
+     ],
+     "results": {
+      "c1": {
+       "verdict": "pass",
+       "steps": "以 Playwright 開啟 http://127.0.0.1:8080/，畫面立即顯示 300×600（每格 30px，共 10 欄 × 20 列格線）的遊戲區且方塊已開始下落，右側清楚顯示「重新開始」按鈕與操作按鍵說明（方向鍵移動/旋轉/加速、空白鍵落下、P 暫停）。",
+       "note": "一進入頁面即可看到 10 欄 × 20 列遊戲區與明確的開始/重新開始按鈕及按鍵提示。",
+       "evidence": "evidence/c1.png",
+       "by": "ai"
+      },
+      "c2": {
+       "verdict": "pass",
+       "steps": "點擊「重新開始」後不按任何按鍵，每隔 850ms 讀取遊戲畫布上方塊所在的列數，觀察到方塊由第 [0,1] 列依序自動下降至第 [1,2] 列與第 [2,3] 列。",
+       "note": "方塊在未操作時會隨時間自動一格一格往下掉落。",
+       "evidence": "evidence/c2.png",
+       "by": "ai"
+      },
+      "c3": {
+       "verdict": "pass",
+       "steps": "按 ArrowLeft 與 ArrowRight 驗證方塊可左右平移一欄；連按 10 次 ArrowLeft 後方塊停在最左欄（第 0 欄），連按 15 次 ArrowRight 後停在最右欄（第 9 欄）；將方塊降到已固定方塊旁再連按 ArrowRight，方塊亦停住不會穿過其他方塊。",
+       "note": "左右方向鍵可正常移動方塊，且碰到左右牆面或已固定方塊時皆有碰撞阻擋不會穿透。",
+       "evidence": "evidence/c3.png",
+       "by": "ai"
+      },
+      "c4": {
+       "verdict": "pass",
+       "steps": "在非 O 形方塊（如 Z 形，初始格位為 (0,3),(0,4),(1,4),(1,5)）出現時按下 ArrowUp，畫布上的方塊格位立即轉為 (0,5),(1,4),(1,5),(2,4)。",
+       "note": "按下上方向鍵可將當前方塊順時針旋轉 90 度。",
+       "evidence": "evidence/c4.png",
+       "by": "ai"
+      },
+      "c5": {
+       "verdict": "pass",
+       "steps": "在方塊位於第 1 列時連續按 3 次 ArrowDown，方塊立即加速降至第 4 列；接著按下空白鍵（Space），方塊瞬間落到底部第 19 列固定並生成下一個方塊。",
+       "note": "下方向鍵可立即加速往下移動，空白鍵可直接落到底部鎖定。",
+       "evidence": "evidence/c5.png",
+       "by": "ai"
+      },
+      "c6": {
+       "verdict": "pass",
+       "steps": "連續放置方塊並透過畫布像素顏色與形狀比對出現過的方塊，實際觀測到 I（青）、O（黃）、T（紫）、S（綠）、Z（紅）、J（藍）、L（橘）全部 7 種形狀。",
+       "note": "實際遊玩過程中確認完整出現 I、O、T、S、Z、J、L 七種俄羅斯方塊形狀。",
+       "evidence": "evidence/c6.png",
+       "by": "ai"
+      },
+      "c7": {
+       "verdict": "pass",
+       "steps": "操作方塊將底部第 19 列全部 10 欄填滿，同時第 18 列留有部分方塊；鎖定瞬間第 19 列被消除，原本位於第 18 列的方塊完整下移至第 19 列，且「消除」行數由 0 增加為 1。",
+       "note": "單行 10 格填滿後會立即消除，且上方列的方塊會同步往下掉一列。",
+       "evidence": "evidence/c7.png",
+       "by": "ai"
+      },
+      "c8": {
+       "verdict": "pass",
+       "steps": "查看右側「分數」面板初始為 0；在填滿最後一格前先以軟降停在底部上方（此時分數為 267），等待自然落下鎖定並消除 1 行後，分數立即增加 100 分變為 367。",
+       "note": "畫面具備分數顯示，且消除行時會依規則增加分數。",
+       "evidence": "evidence/c8.png",
+       "by": "ai"
+      },
+      "c9": {
+       "verdict": "pass",
+       "steps": "查看右側「下一個」預覽面板中的方塊顏色與形狀，並連續 11 次按下空白鍵鎖定當前方塊，每次新生成的頂部方塊皆與鎖定前「下一個」面板預覽的方塊完全一致。",
+       "note": "右側設有「下一個」預覽畫布，且預覽內容與實際下一個出現的方塊完全相符。",
+       "evidence": "evidence/c9.png",
+       "by": "ai"
+      },
+      "c10": {
+       "verdict": "pass",
+       "steps": "連續按空白鍵 12 次讓方塊在中央堆疊至頂端，畫布中央立即覆蓋半透明黑底並顯示紅字「遊戲結束」與「按 Enter 重新開始」；接著點擊「重新開始」按鈕，盤面清空、分數歸 0 並重新開始下落方塊。",
+       "note": "方塊疊到頂端時會明確顯示「遊戲結束」，且可透過按鈕或按鍵重新開始遊戲。",
+       "evidence": "evidence/c10.png",
+       "by": "ai"
+      }
+     },
+     "passed": 10,
+     "total": 10,
+     "model": "gemini-4-argon-high",
+     "status": "done"
+    }
+   },
+   {
+    "run": 2,
+    "rounds": [
+     {
+      "round": 1,
+      "seconds": 287.0,
+      "tokens": 16066,
+      "finish": "length",
+      "chars": 0,
+      "gen_tps": 56.1,
+      "step": 103,
+      "errors": [
+       "沒有寫出完整的 HTML（可能被 token 上限截斷：length）"
+      ],
+      "excerpt": "tion relative. Clean borders on wrapper.\n\nAlso add subtle top glow line on wrapper.\n\nLet me finalize the piece color set and drawCell:\n\n```js\nfunction drawCell(ctx,x,y,size,color,alpha=1){\n  ctx.save();\n  ctx.globalAlpha=alpha;\n  ctx.fillStyle=color;\n  ctx.fillRect(x+1,y+1,size-2,size-2);\n  ctx.fillStyle='rgba(255,255,255,0.32)';\n  ctx.fillRect(x+2.5,y+2.5,size-5,Math.max(3,size*0.26));\n  ctx.fillStyle='rgba(0,0,0,0.18)';\n  ctx.fillRect(x+2.5,y+size*0.72,size-5,size*0.28-2.5);\n  ctx.strokeStyle='rgba(0,0,0,0.4)';\n  ctx.lineWidth=1.5;\n  ctx.strokeRect(x+1.5,y+1.5,size-3,size-3);\n  ctx.restore()"
+     },
+     {
+      "round": 2,
+      "seconds": 278.6,
+      "tokens": 16221,
+      "finish": "length",
+      "chars": 0,
+      "gen_tps": 58.3,
+      "step": 104,
+      "errors": [
+       "沒有寫出完整的 HTML（可能被 token 上限截斷：length）"
+      ],
+      "excerpt": "s: \n\n```js\nfunction bindTouch(){\n  const map = {\n    left: () => move(-1),\n    right: () => move(1),\n    rotate: () => tryRotate(1),\n    hard: () => hardDrop(),\n  };\n  document.querySelectorAll('.touch-controls [data-act]').forEach(btn => {\n    const act = btn.dataset.act;\n    if (act === 'soft'){\n      const on = e => { e.preventDefault(); softTouch = true; };\n      const off = e => { e.preventDefault(); softTouch = false; };\n      btn.addEventListener('pointerdown', on);\n      btn.addEventListener('pointerup', off);\n      btn.addEventListener('pointerleave', off);\n      btn.addEventListener("
+     }
+    ],
+    "delivered": false,
+    "fixed": true,
+    "seed": 43,
+    "errors": [
+     "沒有寫出完整的 HTML（可能被 token 上限截斷：length）"
+    ],
+    "seconds": 565.6,
+    "tokens": 32287
+   },
+   {
+    "run": 3,
+    "rounds": [
+     {
+      "round": 1,
+      "seconds": 286.2,
+      "tokens": 16066,
+      "finish": "length",
+      "chars": 0,
+      "gen_tps": 56.3,
+      "step": 105,
+      "errors": [
+       "沒有寫出完整的 HTML（可能被 token 上限截斷：length）"
+      ],
+      "excerpt": "ame current path. But we changed globalAlpha between stroke & fill — path unaffected. OK.\n\nActually fill with dashed line? Dash affects stroke only; fill unaffected. Good.\n\ndrawActive:\n\n```js\nfunction drawActive() {\n  const color = COLORS[piece.type][0];\n  boardCtx.save();\n  boardCtx.shadowColor = color;\n  boardCtx.shadowBlur = 10;\n  piece.matrix.forEach((row,y)=>row.forEach((v,x)=>{ if(v){\n    const by = piece.y + y;\n    if (by < 0) return;\n    drawCell(boardCtx, (piece.x+x)*CELL, by*CELL, CELL, piece.type);\n  }}));\n  boardCtx.restore();\n}\n```\n\nNote: shadow on each cell draw; 4 cells × shadow"
+     },
+     {
+      "round": 2,
+      "seconds": 269.5,
+      "tokens": 16221,
+      "finish": "length",
+      "chars": 0,
+      "gen_tps": 60.3,
+      "step": 106,
+      "errors": [
+       "沒有寫出完整的 HTML（可能被 token 上限截斷：length）"
+      ],
+      "excerpt": "x}\n  .t-controls{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}\n  .tbtn{background:#1f2650;color:#e8ebff;border:1px solid #3a4578;border-radius:8px;padding:10px 4px;font-size:12px;cursor:pointer}\n  .tbtn:hover,.tbtn:active{background:#2b3568}\n  @media (max-width:780px){\n    .layout{flex-direction:column;align-items:center}\n    .panels{width:100%;flex-direction:row;flex-wrap:wrap;justify-content:center}\n    .panel{flex:1;min-width:104px}\n    .help{display:none}\n  }\n</style>\n</head>\n<body>\n<div class=\"wrap\">\n  <h1>俄羅斯方塊 <span>TETRIS</span></h1>\n  <div class=\"layout\">\n    <aside class="
+     }
+    ],
+    "delivered": false,
+    "fixed": true,
+    "seed": 44,
+    "errors": [
+     "沒有寫出完整的 HTML（可能被 token 上限截斷：length）"
+    ],
+    "seconds": 555.7,
+    "tokens": 32287
+   },
+   {
+    "run": 4,
+    "rounds": [
+     {
+      "round": 1,
+      "seconds": 595.5,
+      "tokens": 30369,
+      "finish": "stop",
+      "chars": 22173,
+      "gen_tps": 51.0,
+      "reasoning_chars": 57171,
+      "step": 108,
+      "errors": []
+     }
+    ],
+    "delivered": true,
+    "fixed": false,
+    "seed": 45,
+    "ctx": 32768,
+    "variant": "context 放大到 32K（KV cache q8_0）",
+    "kv": "q8_0",
+    "errors": [],
+    "seconds": 595.5,
+    "tokens": 30369,
+    "checks": {
+     "items": [
+      {
+       "id": "c1",
+       "text": "打開頁面就看到 10 欄 × 20 列的遊戲區，並且看得出怎麼開始玩",
+       "how": ""
+      },
+      {
+       "id": "c2",
+       "text": "方塊會自己一格一格往下掉",
+       "how": ""
+      },
+      {
+       "id": "c3",
+       "text": "按左右方向鍵可以左右移動方塊，碰到牆或其他方塊不會穿過去",
+       "how": ""
+      },
+      {
+       "id": "c4",
+       "text": "按上方向鍵可以旋轉方塊",
+       "how": ""
+      },
+      {
+       "id": "c5",
+       "text": "按下方向鍵會加速往下；按空白鍵會直接落到底",
+       "how": ""
+      },
+      {
+       "id": "c6",
+       "text": "有 I、O、T、S、Z、J、L 七種形狀",
+       "how": ""
+      },
+      {
+       "id": "c7",
+       "text": "一整行填滿就會消掉，上面的方塊跟著往下掉",
+       "how": ""
+      },
+      {
+       "id": "c8",
+       "text": "有分數，消掉行會加分",
+       "how": ""
+      },
+      {
+       "id": "c9",
+       "text": "有「下一個方塊」的預覽",
+       "how": ""
+      },
+      {
+       "id": "c10",
+       "text": "方塊疊到頂會顯示遊戲結束，而且可以重新開始",
+       "how": ""
+      }
+     ],
+     "results": {
+      "c1": {
+       "verdict": "pass",
+       "steps": "打開 http://127.0.0.1:8080/ 首頁，檢查中間 #board 畫布尺寸與格線（300×600 px，每格 30 px，共 10 欄 × 20 列），並查看覆蓋層與右側操作說明。",
+       "note": "一進入頁面即可看到 10 欄 × 20 列的遊戲區，且畫面中央有明顯的「開始遊戲」按鈕與「或按 Enter / 空白鍵」提示。",
+       "evidence": "evidence/c1.png",
+       "by": "ai"
+      },
+      "c2": {
+       "verdict": "pass",
+       "steps": "點擊「開始遊戲」後不按任何按鍵，每隔約 720 毫秒讀取畫布上方塊所在列數，觀察 J 形方塊從第 0–1 列依序自動落至第 1–2、2–3、3–4 列。",
+       "note": "方塊在未操作時會隨時間自動一格一格往下掉。",
+       "evidence": "evidence/c2.png",
+       "by": "ai"
+      },
+      "c3": {
+       "verdict": "pass",
+       "steps": "在方塊下落時按左、右方向鍵確認方塊由第 3 欄移至第 2 欄再移回第 3 欄；連續按左鍵到底停在第 0 欄、按右鍵到底停在第 9 欄；在右側堆疊方塊後將下落方塊往右推至第 6 欄緊貼已堆疊方塊（欄 7–9），再按右鍵確認座標維持不變。",
+       "note": "左右方向鍵能正常移動方塊，且碰到左右牆壁或其他已落下方塊時皆不會穿過。",
+       "evidence": "evidence/c3.png",
+       "by": "ai"
+      },
+      "c4": {
+       "verdict": "pass",
+       "steps": "在 S 形方塊下落時（旋轉前佔據座標 [1,4],[1,5],[2,3],[2,4]）按下上方向鍵（ArrowUp），觀察畫布上方塊形狀變為直立旋轉態（[1,4],[2,4],[2,5],[3,5]）。",
+       "note": "按上方向鍵可順時針旋轉方塊。",
+       "evidence": "evidence/c4.png",
+       "by": "ai"
+      },
+      "c5": {
+       "verdict": "pass",
+       "steps": "按住下方向鍵（ArrowDown）350 毫秒，方塊從第 1 列快速連掉 9 格至第 10 列（一般速度 700 毫秒才掉 1 格）；接著按下空白鍵（Space），方塊立即落到底部第 19 列並鎖定。",
+       "note": "按下方向鍵會明顯加速下落，按空白鍵會直接落到底部。",
+       "evidence": "evidence/c5.png",
+       "by": "ai"
+      },
+      "c6": {
+       "verdict": "pass",
+       "steps": "連續進行遊戲並記錄每次出現與預覽的方塊形狀與顏色，實測完整出現 I（青）、O（黃）、T（紫）、S（綠）、Z（紅）、J（藍）、L（橘）共 7 種方塊。",
+       "note": "遊戲具備完整的 I、O、T、S、Z、J、L 七種標準俄羅斯方塊形狀。",
+       "evidence": "evidence/c6.png",
+       "by": "ai"
+      },
+      "c7": {
+       "verdict": "pass",
+       "steps": "操作方塊將底部第 19 列填滿 10 格（同時第 18 列留有 J、S、T 等方塊），觀察第 19 列閃白消除後，原本在第 18 列的方塊同步往下掉到第 19 列，且「已消行數 LINES」由 0 變為 1。",
+       "note": "整行填滿後會消除，且上方的方塊會跟著往下掉一格。",
+       "evidence": "evidence/c7.png",
+       "by": "ai"
+      },
+      "c8": {
+       "verdict": "pass",
+       "steps": "檢查左側「分數 SCORE」面板，在填滿第 19 列消除前分數為 230，消除完成後分數立即增加 100 分變為 330。",
+       "note": "畫面有分數顯示，且消掉行時會依消除行數與等級加分。",
+       "evidence": "evidence/c8.png",
+       "by": "ai"
+      },
+      "c9": {
+       "verdict": "pass",
+       "steps": "觀察右側「下一個 NEXT」區塊的 #next 畫布顯示紫色的 T 形方塊預覽，按下空白鍵讓目前方塊落底後，新生成的方塊確實為預覽的 T 形方塊，且預覽區更新為下一個方塊。",
+       "note": "右側設有「下一個 NEXT」預覽區，且預覽內容與實際下一個出現的方塊一致。",
+       "evidence": "evidence/c9.png",
+       "by": "ai"
+      },
+      "c10": {
+       "verdict": "pass",
+       "steps": "連續按空白鍵讓方塊不斷堆疊到頂端，畫面彈出「遊戲結束 GAME OVER」覆蓋層與最終分數；點擊「重新開始」按鈕後，覆蓋層關閉、盤面清空、分數與行數歸零並開始新局。",
+       "note": "方塊疊到頂端會顯示遊戲結束畫面，且點擊「重新開始」按鈕或按 Enter 可重新開始遊戲。",
+       "evidence": "evidence/c10.png",
+       "by": "ai"
+      }
+     },
+     "passed": 10,
+     "total": 10,
+     "model": "gemini-4-argon-high",
+     "status": "done"
+    }
+   },
+   {
+    "run": 5,
+    "rounds": [
+     {
+      "round": 1,
+      "seconds": 544.3,
+      "tokens": 29492,
+      "finish": "stop",
+      "chars": 19096,
+      "gen_tps": 54.2,
+      "reasoning_chars": 54470,
+      "step": 109,
+      "errors": []
+     }
+    ],
+    "delivered": true,
+    "fixed": false,
+    "seed": 46,
+    "ctx": 32768,
+    "variant": "context 放大到 32K（KV cache q8_0）",
+    "kv": "q8_0",
+    "errors": [],
+    "seconds": 544.3,
+    "tokens": 29492,
+    "checks": {
+     "items": [
+      {
+       "id": "c1",
+       "text": "打開頁面就看到 10 欄 × 20 列的遊戲區，並且看得出怎麼開始玩",
+       "how": ""
+      },
+      {
+       "id": "c2",
+       "text": "方塊會自己一格一格往下掉",
+       "how": ""
+      },
+      {
+       "id": "c3",
+       "text": "按左右方向鍵可以左右移動方塊，碰到牆或其他方塊不會穿過去",
+       "how": ""
+      },
+      {
+       "id": "c4",
+       "text": "按上方向鍵可以旋轉方塊",
+       "how": ""
+      },
+      {
+       "id": "c5",
+       "text": "按下方向鍵會加速往下；按空白鍵會直接落到底",
+       "how": ""
+      },
+      {
+       "id": "c6",
+       "text": "有 I、O、T、S、Z、J、L 七種形狀",
+       "how": ""
+      },
+      {
+       "id": "c7",
+       "text": "一整行填滿就會消掉，上面的方塊跟著往下掉",
+       "how": ""
+      },
+      {
+       "id": "c8",
+       "text": "有分數，消掉行會加分",
+       "how": ""
+      },
+      {
+       "id": "c9",
+       "text": "有「下一個方塊」的預覽",
+       "how": ""
+      },
+      {
+       "id": "c10",
+       "text": "方塊疊到頂會顯示遊戲結束，而且可以重新開始",
+       "how": ""
+      }
+     ],
+     "results": {
+      "c1": {
+       "verdict": "pass",
+       "steps": "打開 http://127.0.0.1:8080/，檢查畫布 #board 與開始覆蓋層 #startOverlay；畫面顯示 300×600（每格 30px，共 10 欄 × 20 列）的遊戲區，中央有「開始遊戲」按鈕與「按 Enter 也可以開始」提示。",
+       "note": "一打開頁面即可看到 10 欄 × 20 列的遊戲區與明確的「開始遊戲」按鈕及操作說明。",
+       "evidence": "evidence/c1.png",
+       "by": "ai"
+      },
+      "c2": {
+       "verdict": "pass",
+       "steps": "點擊「開始遊戲」按鈕後不按任何按鍵，連續等待約 1.6 秒觀察方塊位置變化；方塊從第 0 列依序自動下降至第 1 列、第 2 列。",
+       "note": "方塊在未操作時會隨時間固定一格一格往下掉。",
+       "evidence": "evidence/c2.png",
+       "by": "ai"
+      },
+      "c3": {
+       "verdict": "pass",
+       "steps": "按左右方向鍵（ArrowLeft、ArrowRight）移動方塊並連按至左右邊界，再於右側堆疊方塊後將新方塊往右推向已固定方塊；方塊可正常左右移動，且在左牆（col=0）、右牆（最大欄=9）及碰到其他方塊時皆停止不穿過。",
+       "note": "左右方向鍵可移動方塊，且對左右牆壁與已堆疊方塊皆有正確碰撞阻擋。",
+       "evidence": "evidence/c3.png",
+       "by": "ai"
+      },
+      "c4": {
+       "verdict": "pass",
+       "steps": "在非 O 形方塊（Z 形）下落時按下上方向鍵（ArrowUp）；方塊矩陣由 ['110','011','000'] 順時針旋轉 90 度變為 ['001','011','010']，畫面上方塊方向隨之改變。",
+       "note": "按上方向鍵可順時針旋轉方塊。",
+       "evidence": "evidence/c4.png",
+       "by": "ai"
+      },
+      "c5": {
+       "verdict": "pass",
+       "steps": "按住下方向鍵（ArrowDown）260ms 觀察下落速度，接著按下空白鍵（Space）；按住下方向鍵時方塊於 260ms 內快速下降 6 列，按空白鍵時方塊立即落到底部第 19 列鎖定並生成下一個方塊。",
+       "note": "按下方向鍵會大幅加速下落，按空白鍵會直接落到底部固定。",
+       "evidence": "evidence/c5.png",
+       "by": "ai"
+      },
+      "c6": {
+       "verdict": "pass",
+       "steps": "在遊戲中連續擺放並觀察生成的方塊與預覽區；實際出現了 I、O、T、S、Z、J、L 全部七種形狀與對應顏色。",
+       "note": "完整具備 I、O、T、S、Z、J、L 七種方塊形狀。",
+       "evidence": "evidence/c6.png",
+       "by": "ai"
+      },
+      "c7": {
+       "verdict": "pass",
+       "steps": "透過方向鍵與空白鍵將方塊排滿整行（同時上方列有方塊）；填滿的整行立即消除（消除行數由 0 變為 1），且原本位於上方列的方塊隨之往下掉一列。",
+       "note": "一整行填滿時會自動消除，且上方的方塊會跟著往下掉。",
+       "evidence": "evidence/c7.png",
+       "by": "ai"
+      },
+      "c8": {
+       "verdict": "pass",
+       "steps": "觀察右側資訊欄的「分數 SCORE」數值，並在填滿一整行消除前後比對分數；初始分數顯示為 0，消除 1 行後分數加上消行得分（100 × 等級 1）與下落分數更新為 334。",
+       "note": "畫面顯示分數，且消除行時會依規則加分並即時更新。",
+       "evidence": "evidence/c8.png",
+       "by": "ai"
+      },
+      "c9": {
+       "verdict": "pass",
+       "steps": "檢查右側「下一個方塊」卡片中的 #nextCanvas 預覽圖，並按空白鍵讓當前方塊落底；預覽區清楚繪出下一個方塊形狀，且當前方塊鎖定後新生成的方塊與預覽一致，預覽區也同步更新為再下一個方塊。",
+       "note": "具備「下一個方塊」預覽區，且與實際生成的下一個方塊一致。",
+       "evidence": "evidence/c9.png",
+       "by": "ai"
+      },
+      "c10": {
+       "verdict": "pass",
+       "steps": "連續按空白鍵將方塊疊到頂端，接著點擊「再玩一次」按鈕；疊到頂時顯示「遊戲結束」覆蓋層與本局統計，點擊「再玩一次」後覆蓋層關閉、分數與消除行歸零並清空棋盤重新開始。",
+       "note": "方塊疊到頂部時會顯示遊戲結束畫面，且可透過按鈕或按鍵重新開始。",
+       "evidence": "evidence/c10.png",
+       "by": "ai"
+      }
+     },
+     "passed": 10,
+     "total": 10,
+     "model": "gemini-4-argon-high",
+     "status": "done"
+    }
+   },
+   {
+    "run": 6,
+    "rounds": [
+     {
+      "round": 1,
+      "seconds": 303.6,
+      "tokens": 16326,
+      "finish": "stop",
+      "chars": 16324,
+      "gen_tps": 53.9,
+      "reasoning_chars": 26423,
+      "step": 110,
+      "errors": []
+     }
+    ],
+    "delivered": true,
+    "fixed": false,
+    "seed": 47,
+    "ctx": 32768,
+    "variant": "context 放大到 32K（KV cache q8_0）",
+    "kv": "q8_0",
+    "errors": [],
+    "seconds": 303.6,
+    "tokens": 16326,
+    "checks": {
+     "items": [
+      {
+       "id": "c1",
+       "text": "打開頁面就看到 10 欄 × 20 列的遊戲區，並且看得出怎麼開始玩",
+       "how": ""
+      },
+      {
+       "id": "c2",
+       "text": "方塊會自己一格一格往下掉",
+       "how": ""
+      },
+      {
+       "id": "c3",
+       "text": "按左右方向鍵可以左右移動方塊，碰到牆或其他方塊不會穿過去",
+       "how": ""
+      },
+      {
+       "id": "c4",
+       "text": "按上方向鍵可以旋轉方塊",
+       "how": ""
+      },
+      {
+       "id": "c5",
+       "text": "按下方向鍵會加速往下；按空白鍵會直接落到底",
+       "how": ""
+      },
+      {
+       "id": "c6",
+       "text": "有 I、O、T、S、Z、J、L 七種形狀",
+       "how": ""
+      },
+      {
+       "id": "c7",
+       "text": "一整行填滿就會消掉，上面的方塊跟著往下掉",
+       "how": ""
+      },
+      {
+       "id": "c8",
+       "text": "有分數，消掉行會加分",
+       "how": ""
+      },
+      {
+       "id": "c9",
+       "text": "有「下一個方塊」的預覽",
+       "how": ""
+      },
+      {
+       "id": "c10",
+       "text": "方塊疊到頂會顯示遊戲結束，而且可以重新開始",
+       "how": ""
+      }
+     ],
+     "results": {
+      "c1": {
+       "verdict": "pass",
+       "steps": "打開 http://127.0.0.1:8080/，檢查中央 #board 畫布（300×600 px，每格 30 px，共 10 欄 × 20 列格線）與起始遮罩 #overlay-start，並查看右側操作方式面板。",
+       "note": "一進入頁面即可看到 10 欄 × 20 列的遊戲區與清楚標示的「開始遊戲」按鈕（及「或按 Enter 開始」提示）與右側按鍵操作說明。",
+       "evidence": "evidence/c1.png",
+       "by": "ai"
+      },
+      "c2": {
+       "verdict": "pass",
+       "steps": "點擊「開始遊戲」按鈕（#btn-start）啟動遊戲後不按任何按鍵，連續等待約 2.6 秒並觀察方塊所在列數變化。",
+       "note": "方塊每隔約 820 毫秒自動往下移動一格（列索引依序由 0 遞增為 1、2、3），符合自動一格一格下落的需求。",
+       "evidence": "evidence/c2.png",
+       "by": "ai"
+      },
+      "c3": {
+       "verdict": "pass",
+       "steps": "按左右方向鍵（ArrowLeft、ArrowRight）移動下落中的方塊，分別連續按到最左牆（col=0）、最右牆（col+寬度=10）以及右側已堆疊的方塊旁，觀察方塊座標是否越界或穿模。",
+       "note": "按左右方向鍵可逐格水平移動方塊，且碰到左右牆壁或場上既有方塊時皆會被阻擋而不會穿過去。",
+       "evidence": "evidence/c3.png",
+       "by": "ai"
+      },
+      "c4": {
+       "verdict": "pass",
+       "steps": "在非 O 形方塊（如 L 形方塊）下落時按下上方向鍵（ArrowUp），比對按鍵前後的方塊矩陣與畫面呈現。",
+       "note": "按下上方向鍵後，方塊順時針旋轉 90 度（例如 3×2 的 L 形轉為 2×3 直立形態），旋轉功能正常。",
+       "evidence": "evidence/c4.png",
+       "by": "ai"
+      },
+      "c5": {
+       "verdict": "pass",
+       "steps": "按住下方向鍵（ArrowDown）約 450 毫秒觀察方塊下落速度，接著對下一個方塊按下空白鍵（Space）觀察是否立即落底鎖定。",
+       "note": "按住下方向鍵時下落間隔縮短至 45 毫秒而明顯加速往下（450 毫秒內下降 9 格），按空白鍵則直接落到底部並鎖定。",
+       "evidence": "evidence/c5.png",
+       "by": "ai"
+      },
+      "c6": {
+       "verdict": "pass",
+       "steps": "透過空白鍵與方向鍵連續操作並放置一輪方塊，記錄場上出現與預覽區生成的方塊類型與顏色。",
+       "note": "實際遊玩一輪 7-bag 抽籤即可完整看到 I（青）、O（黃）、T（紫）、S（綠）、Z（紅）、J（藍）、L（橘）共七種形狀。",
+       "evidence": "evidence/c6.png",
+       "by": "ai"
+      },
+      "c7": {
+       "verdict": "pass",
+       "steps": "以方向鍵與空白鍵將方塊排列填滿第 20 列（索引 19）整行 10 格，同時在第 19 列（索引 18）保留上方方塊，觀察填滿瞬間的盤面變化。",
+       "note": "第 20 列整行 10 格填滿後立即消除，消除行數由 0 變為 1，且原本位於上方的方塊隨即往下掉一格遞補。",
+       "evidence": "evidence/c7.png",
+       "by": "ai"
+      },
+      "c8": {
+       "verdict": "pass",
+       "steps": "檢查左側資訊面板的「分數」（#score），並比對消除一整行前後的分數變化。",
+       "note": "左側面板清楚顯示目前分數，且消除 1 行時依等級加上 100 分（加計落底距離加分後由 200 分增加至 338 分）。",
+       "evidence": "evidence/c8.png",
+       "by": "ai"
+      },
+      "c9": {
+       "verdict": "pass",
+       "steps": "查看左側面板「下一個方塊」區塊的預覽畫布（#next-canvas），並連續鎖定多個方塊以比對預覽方塊與下一個實際入場的方塊是否一致。",
+       "note": "左側面板設有「下一個方塊」預覽區並正確繪出即將出現的方塊，當前四連方塊落底後即由該預覽方塊入場並更新下一顆預覽。",
+       "evidence": "evidence/c9.png",
+       "by": "ai"
+      },
+      "c10": {
+       "verdict": "pass",
+       "steps": "連續將方塊堆疊至頂端觸發碰撞，等待結束畫面（#overlay-over）顯示後，點擊「重新開始」按鈕（#btn-restart）觀察遊戲狀態。",
+       "note": "方塊疊到頂端時會彈出「遊戲結束 / GAME OVER」畫面與最終成績，點擊「重新開始」按鈕（或按 Enter）即可清空盤面、歸零分數並重新開始遊戲。",
+       "evidence": "evidence/c10.png",
+       "by": "ai"
+      }
+     },
+     "passed": 10,
+     "total": 10,
+     "model": "gemini-4-argon-high",
+     "status": "done"
+    }
+   },
+   {
+    "run": 7,
+    "rounds": [
+     {
+      "round": 1,
+      "seconds": 66.5,
+      "tokens": 4741,
+      "finish": "stop",
+      "chars": 10829,
+      "gen_tps": 71.9,
+      "reasoning_chars": 101,
+      "step": 112,
+      "errors": []
+     }
+    ],
+    "delivered": true,
+    "fixed": false,
+    "seed": 48,
+    "ctx": 16384,
+    "variant": "推理強度調成 low",
+    "effort": "low",
+    "errors": [],
+    "seconds": 66.5,
+    "tokens": 4741,
+    "checks": {
+     "items": [
+      {
+       "id": "c1",
+       "text": "打開頁面就看到 10 欄 × 20 列的遊戲區，並且看得出怎麼開始玩",
+       "how": ""
+      },
+      {
+       "id": "c2",
+       "text": "方塊會自己一格一格往下掉",
+       "how": ""
+      },
+      {
+       "id": "c3",
+       "text": "按左右方向鍵可以左右移動方塊，碰到牆或其他方塊不會穿過去",
+       "how": ""
+      },
+      {
+       "id": "c4",
+       "text": "按上方向鍵可以旋轉方塊",
+       "how": ""
+      },
+      {
+       "id": "c5",
+       "text": "按下方向鍵會加速往下；按空白鍵會直接落到底",
+       "how": ""
+      },
+      {
+       "id": "c6",
+       "text": "有 I、O、T、S、Z、J、L 七種形狀",
+       "how": ""
+      },
+      {
+       "id": "c7",
+       "text": "一整行填滿就會消掉，上面的方塊跟著往下掉",
+       "how": ""
+      },
+      {
+       "id": "c8",
+       "text": "有分數，消掉行會加分",
+       "how": ""
+      },
+      {
+       "id": "c9",
+       "text": "有「下一個方塊」的預覽",
+       "how": ""
+      },
+      {
+       "id": "c10",
+       "text": "方塊疊到頂會顯示遊戲結束，而且可以重新開始",
+       "how": ""
+      }
+     ],
+     "results": {
+      "c1": {
+       "verdict": "pass",
+       "steps": "打開 http://127.0.0.1:8080/ 頁面，檢查中央遊戲畫布（300×600 px，每格 30 px，共 10 欄 × 20 列），並查看覆蓋層上的「開始遊戲」按鈕、「按下 Enter 或點擊按鈕開始遊戲」提示與底部操作說明。",
+       "note": "一打開頁面即可看到 10 欄 × 20 列的遊戲區，且畫面清楚標示點擊「開始遊戲」按鈕或按 Enter 鍵即可開始遊玩。",
+       "evidence": "evidence/c1.png",
+       "by": "ai"
+      },
+      "c2": {
+       "verdict": "pass",
+       "steps": "點擊「開始遊戲」後不按任何按鍵，每隔約 850 ms 觀察當前活動方塊的縱向座標與畫面位置，可見方塊由 y=0 依序自動下移至 y=1、y=2、y=3。",
+       "note": "方塊在未操作鍵盤的情況下會以固定時間間隔（800 ms）自動一格一格往下掉落。",
+       "evidence": "evidence/c2.png",
+       "by": "ai"
+      },
+      "c3": {
+       "verdict": "pass",
+       "steps": "開始遊戲後按 ArrowLeft 與 ArrowRight 驗證方塊可左右平移；連續按 ArrowLeft 10 次與 ArrowRight 15 次測試左右邊界，並在右側堆疊方塊後將新方塊下移至同高度再連續按 ArrowRight 撞擊已放置方塊。",
+       "note": "按左右方向鍵可正常左右移動方塊，且碰到左牆（x=0）、右牆（x=9）或場上既有方塊時皆會停住不會穿過。",
+       "evidence": "evidence/c3.png",
+       "by": "ai"
+      },
+      "c4": {
+       "verdict": "pass",
+       "steps": "在非 O 形方塊出現時記錄旋轉前的方塊矩陣與畫面方向，按下 ArrowUp 鍵後檢查方塊矩陣與畫面呈現。",
+       "note": "按下上方向鍵（ArrowUp）後，方塊矩陣與畫面上的方塊皆正確順時針旋轉 90 度。",
+       "evidence": "evidence/c4.png",
+       "by": "ai"
+      },
+      "c5": {
+       "verdict": "pass",
+       "steps": "連按 3 次 ArrowDown 觀察方塊立即往下移動 3 格（y 由 0 變為 3）；接著按下空白鍵（Space），觀察方塊瞬間落到最底部並鎖定。",
+       "note": "按下方向鍵可立即加速下移一格，按空白鍵則會使方塊直接落到底部並鎖定。",
+       "evidence": "evidence/c5.png",
+       "by": "ai"
+      },
+      "c6": {
+       "verdict": "pass",
+       "steps": "開始遊戲並持續擺放生成的方塊，記錄遊戲中出現並繪製於畫面上的方塊形狀種類。",
+       "note": "實際遊玩過程中完整出現 I、O、T、S、Z、J、L 共七種標準俄羅斯方塊形狀與對應配色。",
+       "evidence": "evidence/c6.png",
+       "by": "ai"
+      },
+      "c7": {
+       "verdict": "pass",
+       "steps": "以方向鍵移動與旋轉方塊將第 19 列（最底列）全部 10 格填滿，且第 18 列留有方塊，觀察填滿瞬間第 19 列消除並檢查原第 18 列方塊是否下移至第 19 列。",
+       "note": "當整行 10 格填滿時該行會立即消除，且上方各列的方塊會同步往下遞補一列。",
+       "evidence": "evidence/c7.png",
+       "by": "ai"
+      },
+      "c8": {
+       "verdict": "pass",
+       "steps": "查看左側面板的「分數」欄位（初始為 0），並以 ArrowDown 讓方塊鎖定並消除一整行，觀察分數由 106 增加至 206（+100 分）。",
+       "note": "畫面左側設有分數顯示區，且消除一整行時分數會明確增加（單行消除加 100 × 等級分）。",
+       "evidence": "evidence/c8.png",
+       "by": "ai"
+      },
+      "c9": {
+       "verdict": "pass",
+       "steps": "查看畫面右側「下一個」面板中的預覽畫布（#next），並將當前方塊落下鎖定，驗證新生成的活動方塊與原本預覽畫布顯示的方塊一致。",
+       "note": "右側面板提供「下一個」方塊預覽區，且預覽的方塊形狀與下一個實際登場的方塊完全相符。",
+       "evidence": "evidence/c9.png",
+       "by": "ai"
+      },
+      "c10": {
+       "verdict": "pass",
+       "steps": "持續按空白鍵在同一位置快速堆疊方塊直到頂部無法生成新方塊，觀察覆蓋層顯示「遊戲結束」與「重新開始」按鈕；接著點擊「重新開始」按鈕檢查棋盤與分數是否重置。",
+       "note": "方塊疊到頂端時會顯示「遊戲結束」與最終分數，且點擊「重新開始」或按 Enter 鍵即可清空棋盤重新開始遊戲。",
+       "evidence": "evidence/c10.png",
+       "by": "ai"
+      }
+     },
+     "passed": 10,
+     "total": 10,
+     "model": "gemini-4-argon-high",
+     "status": "done"
+    }
+   },
+   {
+    "run": 8,
+    "rounds": [
+     {
+      "round": 1,
+      "seconds": 76.2,
+      "tokens": 5455,
+      "finish": "stop",
+      "chars": 12503,
+      "gen_tps": 72.1,
+      "reasoning_chars": 326,
+      "step": 113,
+      "errors": []
+     }
+    ],
+    "delivered": true,
+    "fixed": false,
+    "seed": 49,
+    "ctx": 16384,
+    "variant": "推理強度調成 low",
+    "effort": "low",
+    "errors": [],
+    "seconds": 76.2,
+    "tokens": 5455,
+    "checks": {
+     "items": [
+      {
+       "id": "c1",
+       "text": "打開頁面就看到 10 欄 × 20 列的遊戲區，並且看得出怎麼開始玩",
+       "how": ""
+      },
+      {
+       "id": "c2",
+       "text": "方塊會自己一格一格往下掉",
+       "how": ""
+      },
+      {
+       "id": "c3",
+       "text": "按左右方向鍵可以左右移動方塊，碰到牆或其他方塊不會穿過去",
+       "how": ""
+      },
+      {
+       "id": "c4",
+       "text": "按上方向鍵可以旋轉方塊",
+       "how": ""
+      },
+      {
+       "id": "c5",
+       "text": "按下方向鍵會加速往下；按空白鍵會直接落到底",
+       "how": ""
+      },
+      {
+       "id": "c6",
+       "text": "有 I、O、T、S、Z、J、L 七種形狀",
+       "how": ""
+      },
+      {
+       "id": "c7",
+       "text": "一整行填滿就會消掉，上面的方塊跟著往下掉",
+       "how": ""
+      },
+      {
+       "id": "c8",
+       "text": "有分數，消掉行會加分",
+       "how": ""
+      },
+      {
+       "id": "c9",
+       "text": "有「下一個方塊」的預覽",
+       "how": ""
+      },
+      {
+       "id": "c10",
+       "text": "方塊疊到頂會顯示遊戲結束，而且可以重新開始",
+       "how": ""
+      }
+     ],
+     "results": {
+      "c1": {
+       "verdict": "pass",
+       "steps": "打開 http://127.0.0.1:8080/ 頁面，檢查畫布尺寸與格線（寬 300px × 高 600px、每格 30px，共 10 欄 × 20 列），並確認畫面中央覆蓋層顯示「按開始遊戲，用方向鍵操作方塊，消掉整行得分！」與「開始遊戲」按鈕，左側亦列有方向鍵與空白鍵操作說明。",
+       "note": "一打開頁面即可看到 10 欄 × 20 列的遊戲區，且有清楚的「開始遊戲」按鈕與操作說明。",
+       "evidence": "evidence/c1.png",
+       "by": "ai"
+      },
+      "c2": {
+       "verdict": "fail",
+       "steps": "點擊「開始遊戲」按鈕後不按任何鍵盤按鍵，等待 3 秒觀察方塊位置變化；發現方塊一直停留在頂端 y=0 的初始位置，完全沒有往下移動。",
+       "note": "開始遊戲時未初始化計時變數導致計時結果為 NaN，除非先手動按下方向鍵，否則方塊完全不會自己一格一格往下掉。",
+       "evidence": "evidence/c2.png",
+       "by": "ai"
+      },
+      "c3": {
+       "verdict": "pass",
+       "steps": "開始遊戲後先在左側堆疊方塊，接著對新方塊按右方向鍵移至最右端（停在第 10 欄邊界 x=9 不穿牆），再往下移至已堆疊方塊旁並連續按左方向鍵，方塊緊貼已堆疊方塊停住（minCol=2）且未穿過。",
+       "note": "按左右方向鍵可正常左右移動方塊，且碰到左右牆壁或場上其他方塊時皆會被阻擋而不會穿過去。",
+       "evidence": "evidence/c3.png",
+       "by": "ai"
+      },
+      "c4": {
+       "verdict": "pass",
+       "steps": "在遊戲進行中針對非正方形方塊（如 J 形方塊）按下上方向鍵（ArrowUp），觀察畫布上方塊的方向與矩陣狀態。",
+       "note": "按下上方向鍵後，方塊可順利順時針旋轉 90 度。",
+       "evidence": "evidence/c4.png",
+       "by": "ai"
+      },
+      "c5": {
+       "verdict": "pass",
+       "steps": "開始遊戲後連續按下方向鍵（ArrowDown）5 次，方塊立即向下移動 5 格（y 從 0 變為 5）；接著按下空白鍵（Space），方塊瞬間落到底部固定並生成下一個方塊。",
+       "note": "按下方向鍵可加速將方塊往下移，按空白鍵可直接將方塊落到底部鎖定。",
+       "evidence": "evidence/c5.png",
+       "by": "ai"
+      },
+      "c6": {
+       "verdict": "pass",
+       "steps": "透過鍵盤操作持續進行遊戲並記錄每次出現與預覽的方塊類型，在 30 步內實際觀察到 I、O、T、S、Z、J、L 七種形狀全部出現並落於場上。",
+       "note": "遊戲具備完整的 I、O、T、S、Z、J、L 七種標準俄羅斯方塊形狀。",
+       "evidence": "evidence/c6.png",
+       "by": "ai"
+      },
+      "c7": {
+       "verdict": "pass",
+       "steps": "操作方向鍵旋轉與平移方塊，將最底列（第 20 列）10 格全部填滿（同時第 19 列留有方塊）；填滿瞬間最底列立即消除，原本位於第 19 列的方塊隨之往下掉到最底列，「消行」計數從 0 變為 1。",
+       "note": "一整行填滿時會立即消除，且上方的方塊會正確跟著往下掉一格。",
+       "evidence": "evidence/c7.png",
+       "by": "ai"
+      },
+      "c8": {
+       "verdict": "pass",
+       "steps": "觀察左側「分數」面板顯示初始分數為 0，操作方塊填滿一整行消除後，分數立即增加消行得分（等級 1 單行消除加 100 分，面板分數由 174 升至 276）。",
+       "note": "畫面設有分數顯示，且消掉整行時會正確加分。",
+       "evidence": "evidence/c8.png",
+       "by": "ai"
+      },
+      "c9": {
+       "verdict": "pass",
+       "steps": "查看左側「下一個」預覽框（#nextCanvas）顯示的方塊形狀（如 T 形），按下空白鍵讓目前方塊落底後，剛剛預覽框中的 T 形方塊即成為場上新的落下方塊，同時預覽框更新為再下一個方塊。",
+       "note": "左側面板有「下一個」方塊預覽區，且與實際生成的下一個方塊一致。",
+       "evidence": "evidence/c9.png",
+       "by": "ai"
+      },
+      "c10": {
+       "verdict": "fail",
+       "steps": "連續按空白鍵將方塊不斷往中間堆疊直到頂端（第 10 個方塊疊滿頂部），此時頁面因新方塊生成碰撞檢查陷入無窮迴圈而完全卡死，未顯示「遊戲結束」覆蓋層與「重新開始」按鈕。",
+       "note": "方塊疊到頂端時因 spawn() 內的 while 迴圈寫成無窮迴圈導致整個網頁凍結卡死，無法顯示遊戲結束畫面，也無法重新開始。",
+       "evidence": "evidence/c10.png",
+       "by": "ai"
+      }
+     },
+     "passed": 8,
+     "total": 10,
+     "model": "gemini-4-argon-high",
+     "status": "done"
+    }
+   },
+   {
+    "run": 9,
+    "rounds": [
+     {
+      "round": 1,
+      "seconds": 67.4,
+      "tokens": 4571,
+      "finish": "stop",
+      "chars": 9687,
+      "gen_tps": 68.4,
+      "reasoning_chars": 1393,
+      "step": 114,
+      "errors": []
+     }
+    ],
+    "delivered": true,
+    "fixed": false,
+    "seed": 50,
+    "ctx": 16384,
+    "variant": "推理強度調成 low",
+    "effort": "low",
+    "errors": [],
+    "seconds": 67.4,
+    "tokens": 4571,
+    "checks": {
+     "items": [
+      {
+       "id": "c1",
+       "text": "打開頁面就看到 10 欄 × 20 列的遊戲區，並且看得出怎麼開始玩",
+       "how": ""
+      },
+      {
+       "id": "c2",
+       "text": "方塊會自己一格一格往下掉",
+       "how": ""
+      },
+      {
+       "id": "c3",
+       "text": "按左右方向鍵可以左右移動方塊，碰到牆或其他方塊不會穿過去",
+       "how": ""
+      },
+      {
+       "id": "c4",
+       "text": "按上方向鍵可以旋轉方塊",
+       "how": ""
+      },
+      {
+       "id": "c5",
+       "text": "按下方向鍵會加速往下；按空白鍵會直接落到底",
+       "how": ""
+      },
+      {
+       "id": "c6",
+       "text": "有 I、O、T、S、Z、J、L 七種形狀",
+       "how": ""
+      },
+      {
+       "id": "c7",
+       "text": "一整行填滿就會消掉，上面的方塊跟著往下掉",
+       "how": ""
+      },
+      {
+       "id": "c8",
+       "text": "有分數，消掉行會加分",
+       "how": ""
+      },
+      {
+       "id": "c9",
+       "text": "有「下一個方塊」的預覽",
+       "how": ""
+      },
+      {
+       "id": "c10",
+       "text": "方塊疊到頂會顯示遊戲結束，而且可以重新開始",
+       "how": ""
+      }
+     ],
+     "results": {
+      "c1": {
+       "verdict": "pass",
+       "steps": "以 Playwright 開啟 http://127.0.0.1:8080/，檢查中央 #board 畫布（300×600 px，每格 30 px，繪製 10 欄 × 20 列格線）與下方 #controls 操作說明文字。",
+       "note": "一打開頁面即可看到 10 欄 × 20 列的遊戲區且遊戲自動開始，下方亦清楚標示方向鍵、空白鍵與「按 Enter 開始遊戲」的操作說明。",
+       "evidence": "evidence/c1.png",
+       "by": "ai"
+      },
+      "c2": {
+       "verdict": "pass",
+       "steps": "開啟頁面後不按任何按鍵，每隔約 620ms 連續觀察紀錄當前下落方塊（T 形）的 y 座標變化，並截圖存證。",
+       "note": "方塊的 y 座標依序由 0 自動遞增為 1、2、3、4，確實每約 600ms 自己一格一格往下掉。",
+       "evidence": "evidence/c2.png",
+       "by": "ai"
+      },
+      "c3": {
+       "verdict": "pass",
+       "steps": "按 ArrowLeft 與 ArrowRight 驗證方塊 x 座標增減；連按 ArrowLeft 15 次與 ArrowRight 20 次測試左右牆邊界；再先落下方塊堆疊於右側後，將新方塊降至同列並連按 ArrowRight 15 次測試碰撞。",
+       "note": "按左右方向鍵可正常左右移動方塊，碰到左牆（x=0）、右牆（x=9）或已落定的其他方塊時均會被碰撞檢測擋住而不會穿過去。",
+       "evidence": "evidence/c3.png",
+       "by": "ai"
+      },
+      "c4": {
+       "verdict": "pass",
+       "steps": "待非 O 形方塊（T 形）出現並往下移動兩格後，按下 ArrowUp 鍵並比對旋轉前後的方塊矩陣與畫面。",
+       "note": "按下上方向鍵後，T 形方塊矩陣由 [[0,1,0],[1,1,1],[0,0,0]] 順時針旋轉 90 度為 [[0,1,0],[0,1,1],[0,1,0]]。",
+       "evidence": "evidence/c4.png",
+       "by": "ai"
+      },
+      "c5": {
+       "verdict": "pass",
+       "steps": "快速連按 5 次 ArrowDown 觀察方塊立即向下移動 5 格且下落計時縮短為 50ms；接著將方塊移至左側並按下 Space（空白鍵）觀察是否直接落到底部第 19 列。",
+       "note": "按下方向鍵會立即下移並加速掉落，按空白鍵則會使方塊直接落到底部固定並立刻生成下一個方塊。",
+       "evidence": "evidence/c5.png",
+       "by": "ai"
+      },
+      "c6": {
+       "verdict": "pass",
+       "steps": "在遊戲中連續操作方塊落下共 20 回合，記錄所有實際出現於遊戲區與預覽區的方塊種類並截圖。",
+       "note": "實測共完整出現 I、J、L、O、S、T、Z 七種俄羅斯方塊形狀。",
+       "evidence": "evidence/c6.png",
+       "by": "ai"
+      },
+      "c7": {
+       "verdict": "pass",
+       "steps": "透過方向鍵旋轉與左右移動依序排列 6 個方塊，使最底列（第 19 列）10 格全部填滿且上方第 17、18 列留有方塊，觀察消除前後各列方塊變化。",
+       "note": "第 19 列填滿 10 格後立即消除，原本位於第 18 列的方塊完整下移至第 19 列、第 17 列的方塊下移至第 18 列。",
+       "evidence": "evidence/c7.png",
+       "by": "ai"
+      },
+      "c8": {
+       "verdict": "pass",
+       "steps": "觀察左側面板「分數」顯示，並以 ArrowDown 軟降完成第 19 列填滿消除（排除空白鍵硬降距離加分），比對消除前後的分數變化。",
+       "note": "介面左側設有分數面板，消除 1 整行後分數由 172 增加為 272（+100 分），確認消掉行會加分。",
+       "evidence": "evidence/c8.png",
+       "by": "ai"
+      },
+      "c9": {
+       "verdict": "pass",
+       "steps": "檢查右側「下一個」面板中的 #next-canvas 像素繪製內容與預覽方塊類型（Z 形），並按下空白鍵讓當前 S 形方塊落底，驗證新生成的當前方塊是否與預覽一致。",
+       "note": "右側「下一個」預覽區清楚繪出下一個方塊，且當前方塊落定後新出現的方塊確實就是原本預覽的 Z 形方塊。",
+       "evidence": "evidence/c9.png",
+       "by": "ai"
+      },
+      "c10": {
+       "verdict": "pass",
+       "steps": "連續按空白鍵 11 次讓方塊快速堆疊至頂端觸發遊戲結束，截圖確認「遊戲結束」遮罩與按鈕後，點擊「重新開始」按鈕（#restart-btn）檢查狀態重置。",
+       "note": "方塊疊到頂時會顯示「遊戲結束」畫面與最終分數，點擊「重新開始」按鈕後棋盤清空、分數歸零並恢復遊戲運作。",
+       "evidence": "evidence/c10.png",
+       "by": "ai"
+      }
+     },
+     "passed": 10,
+     "total": 10,
+     "model": "gemini-4-argon-high",
+     "status": "done"
+    }
+   }
+  ],
+  "steps": [
+   100,
+   101,
+   102,
+   103,
+   104,
+   105,
+   106,
+   107,
+   108,
+   109,
+   110,
+   111,
+   112,
+   113,
+   114
+  ],
+  "delivered": 7,
+  "fixed": 3,
+  "seconds": 3287.4,
+  "tokens": 187510,
+  "ctx": 16384,
+  "variants": [
+   {
+    "label": "context 放大到 32K（KV cache q8_0）",
+    "ctx": 32768,
+    "kv": "q8_0",
+    "runs": [
+     4,
+     5,
+     6
+    ]
+   },
+   {
+    "label": "推理強度調成 low",
+    "effort": "low",
+    "runs": [
+     7,
+     8,
+     9
+    ]
+   }
+  ]
+ },
+ "ctx_scan": [
+  {
+   "target": 1000,
+   "prompt_n": 720,
+   "prompt_tps": 894.5,
+   "gen_n": 128,
+   "gen_tps": 50.3,
+   "draft_n": 183,
+   "draft_accepted": 66,
+   "step": 45
+  },
+  {
+   "target": 4000,
+   "prompt_n": 3432,
+   "prompt_tps": 1070.4,
+   "gen_n": 128,
+   "gen_tps": 54.5,
+   "draft_n": 163,
+   "draft_accepted": 72,
+   "step": 46
+  },
+  {
+   "target": 8000,
+   "prompt_n": 6822,
+   "prompt_tps": 1043.6,
+   "gen_n": 128,
+   "gen_tps": 54.8,
+   "draft_n": 159,
+   "draft_accepted": 73,
+   "step": 47
+  },
+  {
+   "target": 15000,
+   "prompt_n": 12924,
+   "prompt_tps": 1019.8,
+   "gen_n": 128,
+   "gen_tps": 52.1,
+   "draft_n": 164,
+   "draft_accepted": 72,
+   "step": 48
+  }
+ ],
+ "started": "2026-11-24T16:37:59+08:00",
+ "totals": {
+  "requests": 12,
+  "prompt_tokens": 3351,
+  "completion_tokens": 187510,
+  "gpu_wh": 118.0,
+  "gpu_peak_w": 136.5,
+  "samples": 1849,
+  "seconds": 3562.3,
+  "rerun_only": "tetris",
+  "gpu_kwh": 0.118
+ },
+ "history": [],
+ "ended": "2026-11-24T20:12:21+08:00",
+ "rerun": "tetris",
+ "totals_first_run": {
+  "requests": 91,
+  "prompt_tokens": 78578,
+  "completion_tokens": 172231,
+  "gpu_wh": 110.5,
+  "gpu_peak_w": 155.1,
+  "samples": 3628,
+  "seconds": 3746.0,
+  "gpu_kwh": 0.111
+ }
+}

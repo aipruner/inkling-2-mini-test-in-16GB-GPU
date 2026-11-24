@@ -1,0 +1,18 @@
+$ docker run -d --name tw-model-20261124-article-tetris --gpus all --user 1003:1004 --cap-drop ALL --security-opt no-new-privileges --memory 48g --pids-limit 2048 -p 127.0.0.1:10091:8080 -v ./models:/models:ro tw-llama-unslothai-llama.cpp:b12651-mix-c7059d6 -m /models/unsloth/Inkling-2-Mini-GGUF/Inkling-2-Mini-UD-Q3_K_XL.gguf --host 0.0.0.0 --port 8080 -c 16384 -np 1 -ngl 99 -md /models/unsloth/Inkling-2-Mini-GGUF/dspark-Inkling-2-Mini-Q8_0.gguf --spec-type draft-dspark --spec-draft-n-max 3 -ngld 99
+
+0.00.075.010 I srv  llama_server: initializing ...
+0.00.075.020 I cmn  common_param: common_params_print_info: verbosity = 3 (adjust with the `-lv N` CLI arg)
+0.00.076.090 W srv  server_setup: security: no API key is set and CORS allows all origins (see https://github.com/ggml-org/llama.cpp/pull/25655)
+0.00.077.514 I srv    load_model: loading model '/models/unsloth/Inkling-2-Mini-GGUF/Inkling-2-Mini-UD-Q3_K_XL.gguf'
+0.01.182.510 W common_fit_params: failed to fit params to free device memory: n_gpu_layers already set by user to 99, abort
+0.03.377.251 I cmn          init: llama threadpool init, n_threads = 6
+0.03.492.902 I common_speculative_init_result: loading draft model '/models/unsloth/Inkling-2-Mini-GGUF/dspark-Inkling-2-Mini-Q8_0.gguf'
+0.03.831.928 I srv    load_model: initializing, n_slots = 1, n_ctx_slot = 16384, kv_unified = 'false'
+0.03.831.949 I common_speculative_impl_draft_dflash: adding speculative implementation 'draft-dspark'
+0.03.831.950 I common_speculative_impl_draft_dflash: - n_max=3, n_min=0, p_min=0.00
+0.03.831.950 I common_speculative_impl_draft_dflash: - block_size=8, mask_token_id=0, n_extract=4
+0.03.831.958 I common_speculative_impl_draft_dspark: - sample_from_anchor=false, has_markov_context=true
+0.03.832.073 I init: DFlash target features via device buffer
+0.03.873.119 W srv          init: chat template supports preserving reasoning, it is enabled by default (may use more tokens, disable via --no-reasoning-preserve)
+0.03.873.154 I srv  server_run_i: model loaded
+0.03.874.148 I srv  server_on_li: listening on http://0.0.0.0:8080

@@ -1,0 +1,3 @@
+$ curl -L --fail -sS -C - -o ./models/unsloth/Inkling-2-Mini-GGUF/Inkling-2-Mini-UD-Q3_K_XL.gguf.part https://huggingface.co/unsloth/Inkling-2-Mini-GGUF/resolve/main/Inkling-2-Mini-UD-Q3_K_XL.gguf
+
+已經下載過：./models/unsloth/Inkling-2-Mini-GGUF/Inkling-2-Mini-UD-Q3_K_XL.gguf（13631779296 bytes）

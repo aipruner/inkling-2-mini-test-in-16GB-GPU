@@ -1,0 +1,11 @@
+$ docker run -d --name tw-model-20261124-article-c3 --gpus all --user 1003:1004 --cap-drop ALL --security-opt no-new-privileges --memory 48g --pids-limit 2048 -p 127.0.0.1:10091:8080 -v ./models:/models:ro tw-llama-unslothai-llama.cpp:b12651-mix-c7059d6 -m /models/unsloth/Inkling-2-Mini-GGUF/Inkling-2-Mini-UD-Q3_K_XL.gguf --host 0.0.0.0 --port 8080 -c 16384 -np 1 -ngl 99 -ctk q8_0 -ctv q8_0
+
+0.00.100.489 I srv  llama_server: initializing ...
+0.00.100.500 I cmn  common_param: common_params_print_info: verbosity = 3 (adjust with the `-lv N` CLI arg)
+0.00.101.600 W srv  server_setup: security: no API key is set and CORS allows all origins (see https://github.com/ggml-org/llama.cpp/pull/25655)
+0.00.103.039 I srv    load_model: loading model '/models/unsloth/Inkling-2-Mini-GGUF/Inkling-2-Mini-UD-Q3_K_XL.gguf'
+0.02.688.924 I cmn          init: llama threadpool init, n_threads = 6
+0.02.870.100 I srv    load_model: initializing, n_slots = 1, n_ctx_slot = 16384, kv_unified = 'false'
+0.02.873.088 W srv          init: chat template supports preserving reasoning, it is enabled by default (may use more tokens, disable via --no-reasoning-preserve)
+0.02.873.122 I srv  server_run_i: model loaded
+0.02.874.125 I srv  server_on_li: listening on http://0.0.0.0:8080
